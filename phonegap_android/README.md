@@ -9,7 +9,7 @@
 	import <your_package_name>.R;
 
 ## Usage Example
-
+```javascript
 window.plugins.VINBarcodeScanner.scan(function(result) {
 
 			if (result.text && result.text.trim().length > 0) {
@@ -21,7 +21,7 @@ window.plugins.VINBarcodeScanner.scan(function(result) {
 		}, function(error) {
 			//error occurred while scanning;
 		});
-		
+```		
 		
 ## Licensing & Support
 

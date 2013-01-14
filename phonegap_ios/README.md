@@ -3,10 +3,10 @@
 ## Installing iOS VIN Scanner Plugin
 1. Put "barcodescanner.js" in your "www/resources/js/" folder.
 2. Register plugin in Cordova.plist. Example is shown in "Cordova.plist" file in this repo.
-3. Copy "Plugons/" folder in your project's folder.
+3. Copy "Plugins/" folder in your project's folder.
 
 ## Usage Example
-
+```javascript
 window.plugins.VINBarcodeScanner.scan(function(result) 
 	{
 		if (result.VINCode && result.VINCode.trim().length > 0) {
@@ -18,7 +18,7 @@ window.plugins.VINBarcodeScanner.scan(function(result)
 		}, function(error) {
 			//error while scanning;
 		}, ["ScannerMainViewController"]);
-			
+```			
 ## Licensing & Support
 
 **For licensing and support questions please contact us directly at vin@bees4honey.com**
