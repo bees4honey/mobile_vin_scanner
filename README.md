@@ -16,14 +16,15 @@ Our SDK is intended to scan only VIN barcode and nothing more, so we have optimi
 
 There are two ways to try our VIN scanning technology.
 
-1. Try our free apps:
-* iOS https://itunes.apple.com/us/app/vin-barcode-scanner/id497948900?mt=8
-* Android coming very soon
-2. Download appropriate project to try it in your app:
-* ios_scanner - native iOS project, which you can build and try. 
-* android_scanner - native Android project.
-* phonegap_ios - PhoneGap plugin for iOS
-* phonegap_android - PhoneGap plugin for Android
+### Try our free apps:
+1. iOS https://itunes.apple.com/us/app/vin-barcode-scanner/id497948900?mt=8
+2. Android coming very soon
+
+### Download appropriate project to try it in your app:
+1. ios_scanner - native iOS project, which you can build and try. 
+2. android_scanner - native Android project.
+3. phonegap_ios - PhoneGap plugin for iOS
+4. phonegap_android - PhoneGap plugin for Android
 
 ## Licensing
 
