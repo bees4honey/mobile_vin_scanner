@@ -1,6 +1,6 @@
-This is an Android version of Mobile VIN Scanner PhoneGap plugin.
+# Mobile VIN Scanner PhoneGap plugin for Android.
 
-Installing Android VIN Scanner Plugin
+## Installing Android VIN Scanner Plugin
 
 1. Please copy contents of "manifest.txt" into your "AndroidManifest.xml" between <manifest> and </manifest> tags.
 2. Please copy contents of "plugins.txt" into your "res/xml/plugin.xml" between <plugins> and </plugins> tags.
@@ -8,7 +8,7 @@ Installing Android VIN Scanner Plugin
 4. Specify your package name in "/src/com/bees4honey/vinscanner/Scanner.java" in the following line (second from top):
 	import <your_package_name>.R;
 
-Usage Example
+## Usage Example
 
 window.plugins.VINBarcodeScanner.scan(function(result) {
 
@@ -23,8 +23,8 @@ window.plugins.VINBarcodeScanner.scan(function(result) {
 		});
 		
 		
-Licensing & Support
+## Licensing & Support
 
-For licensing and support questions please contact us directly at vin@bees4honey.com
+**For licensing and support questions please contact us directly at vin@bees4honey.com**
 
 Thanks!

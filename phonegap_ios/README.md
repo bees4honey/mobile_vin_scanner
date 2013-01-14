@@ -1,11 +1,11 @@
-This is an iOS version of Mobile VIN Scanner PhoneGap plugin.
+# Mobile VIN Scanner PhoneGap plugin for iOS.
 
-Installing iOS VIN Scanner Plugin
+## Installing iOS VIN Scanner Plugin
 1. Put "barcodescanner.js" in your "www/resources/js/" folder.
 2. Register plugin in Cordova.plist. Example is shown in "Cordova.plist" file in this repo.
 3. Copy "Plugons/" folder in your project's folder.
 
-Usage Example
+## Usage Example
 
 window.plugins.VINBarcodeScanner.scan(function(result) 
 	{
@@ -18,10 +18,9 @@ window.plugins.VINBarcodeScanner.scan(function(result)
 		}, function(error) {
 			//error while scanning;
 		}, ["ScannerMainViewController"]);
-		
-		
-Licensing & Support
+			
+## Licensing & Support
 
-For licensing and support questions please contact us directly at vin@bees4honey.com
+**For licensing and support questions please contact us directly at vin@bees4honey.com**
 
 Thanks!
