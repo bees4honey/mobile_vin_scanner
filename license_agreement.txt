@@ -1,0 +1,143 @@
+MOBILE VIN SCANNER SDK LICENSE AGREEMENT 
+THIS MOBILE VIN SCANNER SOFTWARE DEVELOPMENT KIT LICENSE AGREEMENT (the "Agreement") is 
+between You ("Your" or "Licensee") and  KB_Soft Group Ltd, Drake Chambers Tortola 
+VIRGIN ISLANDS (BRITISH). 
+
+RECITALS 
+A.Whereas, KB_Soft Group Ltd is the owner of certain VIN (Vehicle Identification Number) 
+code scanning technology, currently referred to as "Mobile VIN Scanner", and licenses such 
+technology for use in various software applications; and 
+B.Whereas, the parties mutually desire to enter into a license agreement for Kb_Soft Group 
+Ltd's Mobile VIN Scanner code scanning technology. NOW, THEREFORE, in consideration of 
+the mutual promises and covenants set forth herein, and other good and valuable consideration, 
+the receipt and sufficiency of which is hereby acknowledged, the parties agree as follows: 
+
+AGREEMENT 
+1. Definitions "Application" means the software application, website or other interface 
+that you develop, own or operate to interact with the Mobile VIN Scanner API (defined below) 
+that adds value to the Mobile VIN Scanner Software (as defined below). The Application 
+includes bug fixes, updates, upgrades, modifications, enhancements, additions to, revisions, 
+new releases and new versions of such software application, website or other interface. 
+"Personal Information" is any information pertaining to a directly or indirectly identifiable 
+individual. It may include information that you collect directly from users in connection 
+with your Application. "Mobile VIN Scanner API" is an application programming interface 
+that can be implemented by a software program to allow it to interact with Applications 
+utilizing Mobile VIN Scanner. "Mobile VIN Scanner SDK (Software Development Kit)" means 
+the Mobile VIN Scanner API and all other tools and information made available to you by 
+KB_Soft Group Ltd under the name "Mobile VIN Scanner". "Mobile VIN Scanner Software" 
+means the components of the Mobile VIN Scanner SDK that are identified in the Mobile VIN 
+Scanner SDK as "redistributable." "Site(s)" means any domestic or international website 
+owned, operated, controlled or utilized by KB_Soft Group Ltd or its subsidiaries, in 
+connection with the Mobile VIN Scanner SDK. "User Agreement" means a binding and enforceable 
+agreement between you and Your Users that includes the Minimum User Terms contained in 
+Section 2.2 below. "Your Users" mean end-users of your Application and your service providers. 
+2. License Terms 
+2.1 Software Licenses. Subject to the terms and conditions in this Agreement, KB_Soft Group 
+Ltd grants you the following software licenses: (a) Development. KB_Soft Group Ltd grants 
+you a limited, revocable, worldwide, non-assignable and non-exclusive license to use the 
+Mobile VIN Scanner SDK solely to develop the Application. You may not sublicense this right 
+to any third party. License may be revoked only for violation of licensing terms outlined 
+within the Agreement, Section 4. (b) Distribution to Your Users. You may reproduce and 
+distribute to Your Users the Application you have developed, subject to the Minimum Users 
+Terms contained in Section 2.2 below. These licenses are granted only for purposes that 
+are permitted by this Agreement and any applicable law, regulation or generally accepted 
+practices or guidelines in the relevant jurisdictions (including any laws regarding the 
+export of data or software to and from the United States or other relevant countries). 
+Third parties may assist you in exercising these license rights provided that such parties 
+are bound by written obligations of confidentiality at least as stringent as those in this 
+Agreement, and that you are responsible for such third parties' compliance with this Agreement. 
+Your license rights to the Mobile VIN Scanner SDK do not include any license, right, 
+power or authority to subject the Mobile VIN Scanner SDK, in whole or in part, to any 
+terms of an Excluded License. "Excluded License" means any license that requires as a 
+condition of use (1) that Mobile VIN Scanner SDK code be modified and/or distributed 
+pursuant to the Excluded License, or (2) that such Mobile VIN Scanner SDK code or other 
+source code combined and/or distributed with such Mobile VIN Scanner SDK code be (a) disclosed 
+or distributed in source code form; (b) licensed for the purposes of making derivative works; 
+or (c) redistributed at no charge. 
+2.2 Minimum User Terms. You may sublicense the Mobile VIN Scanner Software to Your Users 
+only as stated in Section 2.1(b) and only subject to a User Agreement which ensures 
+that: (a) Your Users may not access the APIs other than in the normal course of using the 
+Application; create any derivative work of the Application; or decompile, reverse engineer, 
+or otherwise attempt to derive source code, underlying ideas, algorithms, structure, or 
+organization of the Application, except to the extent required by local law to obtain 
+interoperability with independently created computer programs or as required by other 
+compulsory local law; (b) Any warranty, indemnification or liability offered to the Your 
+User comes solely from you, not from KB_Soft Group Ltd. 
+3. Your Obligations 
+3.1 You will ensure that your Application and your use of the Mobile VIN Scanner SDK 
+complies at all times with the requirements set out in this Agreement, any applicable 
+third-party terms or requirements, any applicable laws and regulations (including but not 
+limited to any criminal, civil or statutory laws, privacy laws, consent requirements, etc.). 
+3.2 You may receive Personal Information about Your Users. All collection and use of Personal 
+Information will be only as authorized by Your Users and will comply with your privacy 
+policy and practices. Your privacy policy and practices will comply with applicable laws. 
+If you use the Mobile VIN Scanner SDK to develop the Application for general public users, 
+you will protect the privacy and legal rights of Your Users. If Your Users provide you 
+with user names, passwords, or other login information or personal information, you must 
+make Your Users aware that the information will be available to your Application, and you 
+must provide a legally adequate privacy notice and protection for Your Users. If your 
+Application stores personal or sensitive information provided by Your Users, it must do 
+so securely. 
+3.3 You are solely responsible for any data, content, or resources that you create, 
+transmit or display through your Application, and for the consequences of your actions 
+by doing so. 
+3.4 You are solely responsible for any breach of your obligations under this Agreement, 
+any applicable third-party contract or terms of service or terms of use, or any applicable 
+law or regulation, and for the consequences of any such breach. 
+3.5 You shall at all times remain fully responsible for any acts or omissions of any 
+contractors or service providers you involve in the performance of your activities or obligations. 
+3.6 You represent and warrant that you have the authority to bind the party using the 
+Mobile VIN Scanner SDK and you and that party are collectively referred to as "you" or 
+"your" in this Agreement. If you are agreeing to be bound by this Agreement on behalf of 
+your employer or other entity, you represent and warrant that you have full legal authority 
+to bind your employer or such entity to this Agreement. If you do not have the requisite 
+authority, you may not accept this Agreement or use the Mobile VIN Scanner SDK on behalf 
+of your employer or other entity. You may not use the Mobile VIN Scanner SDK and may not 
+accept this Agreement if you are a person barred from receiving the Mobile VIN Scanner 
+SDK under the laws of the United States or other countries including the country in which 
+you are resident or from which you use the Mobile VIN Scanner SDK. 
+3.7 You are solely responsible for providing any additional customer support to Your Users. 
+KB_Soft Group Ltd has no responsibility for providing any support for any Application, 
+and will refer all Application user questions about the Application to you. 
+4. Restricted Activities 
+You may not use or access (nor facilitate or enable others to use or access) the Mobile 
+VIN Scanner SDK in any way not expressly permitted under this Agreement. For example, 
+you will not and you will not facilitate or enable others to: Distribute, publish, or 
+allow access or linking to the Mobile VIN Scanner API from any location or source other 
+than your Application; Enable or permit the disclosure of Mobile VIN Scanner Content other 
+than as authorized under this Agreement; Commercialize (that is, sell, rent, trade or lease), 
+copy or store the Mobile VIN Scanner Content, other than for the intermediate purposes 
+allowed by this Agreement; Modify, decompile, reverse engineer or otherwise alter the 
+Mobile VIN Scanner SDK or parts of it or the Mobile VIN Scanner Content; Use robots, 
+spyders, scraping or other technology to access or use Mobile VIN Scanner Content to 
+obtain any information beyond what KB_Soft Group Ltd provides to you under this Agreement; 
+Knowingly create an Application that may be used to violate or that violates the law, 
+this Agreement or any applicable third-party terms; Have your Application or your use of 
+Mobile VIN Scanner Content or your use any of the Mobile VIN Scanner SDK: (a) be false, 
+inaccurate or misleading; (b) infringe on any third party's copyright, patent, trademark, 
+trade secret or other property rights or rights of publicity or privacy; (c) violate 
+any law, statute, ordinance, contract, regulation or generally accepted practice in all 
+relevant jurisdictions (including without limitation those governing trade and export, 
+financial services, consumer protection, unfair competition, antidiscrimination or false 
+advertising); (d) be offensive, defamatory, trade libelous, threatening or harassing; 
+(e) contain any viruses or other computer programming routines that may damage, detrimentally 
+interfere with, surreptitiously intercept or expropriate any system or data. 
+5. Disclaimer of Warranties 
+SOME JURISDICTIONS DO NOT ALLOW CERTAIN WARRANTY DISCLAIMERS OR LIMITATIONS ON LIABILITY.
+ONLY DISCLAIMERS OR LIMITATIONS THAT ARE LAWFUL IN THE APPLICABLE JURISDICTION WILL APPLY 
+TO YOU AND KB_SOFT GROUP LTD'S LIABILITY WILL BE LIMITED TO THE MAXIMUM EXTENT PERMITTED 
+BY LAW. EXCEPT AS EXPRESSLY STATED HEREIN, KB_SOFT GROUP LTD DISCLAIMS ALL WARRANTIES AND 
+CONDITIONS, EXPRESS, IMPLIED OR STATUTORY, INCLUDING WITHOUT LIMITATION THE IMPLIED WARRANTIES 
+OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. ALSO, 
+YOU ACKNOWLEDGE THAT THE USE OF MOBILE TECHNOLOGIES IS A HIGHLY LITIGIOUS FIELD AND THAT 
+THIRD PARTIES MAY CLAIM THAT THE MOBILE VIN SCANNER SDK INFRINGES THEIR INTELLECTUAL PROPERTY 
+RIGHTS. KB_SOFT GROUP LTD DOES NOT REPRESENT OR WARRANT THAT THE MOBILE VIN SCANNER SDK 
+OR ANY PART OF IT WILL OPERATE SECURELY OR WITHOUT INTERRUPTION. ALL SOFTWARE AND SERVICES 
+PROVIDED BY KB_SOFT GROUP LTD HEREUNDER ARE PROVIDED "AS IS" AND "AS AVAILABLE." YOU 
+ACKNOWLEDGE THAT YOU HAVE NOT ENTERED INTO THIS AGREEMENT IN RELIANCE UPON ANY WARRANTY 
+OR REPRESENTATION EXCEPT THOSE SPECIFICALLY SET FORTH HEREIN. 
+6. LIMITATION OF LIABILITY 
+KB_SOFT GROUP LTD WILL HAVE NO CONSEQUENTIAL, SPECIAL, INDIRECT, EXEMPLARY, PUNITIVE, 
+OR OTHER LIABILITY WHETHER IN CONTRACT, TORT OR ANY OTHER LEGAL THEORY, UNDER THIS 
+AGREEMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH LIABILITY AND NOTWITHSTANDING ANY 
+FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.

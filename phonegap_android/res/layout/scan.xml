@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent">
+	
+	<SurfaceView
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent" 
+		android:id="@+id/camera_view"
+		android:layout_centerInParent="true"
+		>
+	</SurfaceView>
+	
+	<com.bees4honey.vinscanner.Rotator
+		xmlns:android="http://schemas.android.com/apk/res/android" 
+		xmlns:Rotator="http://schemas.android.com/apk/res/com.bees4honey.vinscanner" 
+
+		android:id="@+id/rotate_view" 
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content">
+
+		<com.bees4honey.vinscanner.ViewFinder	xmlns:android="http://schemas.android.com/apk/res/android" 
+			xmlns:ViewFinder="http://schemas.android.com/apk/res/com.bees4honey.vinscanner" 
+			android:id="@+id/viewfinder_view"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			/>
+		
+		<android.widget.Button 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_gravity="bottom|left" 
+			android:height="40px" 
+			android:width="40px" 
+			android:id="@+id/TorchButton" 
+			android:background="@drawable/light">
+		</android.widget.Button>
+	</com.bees4honey.vinscanner.Rotator>
+</FrameLayout>

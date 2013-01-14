@@ -1,0 +1,1 @@
+<plugin name="VinBarScanner" value="com.bees4honey.vinscanner.plugin.VinBarScanner"/>
