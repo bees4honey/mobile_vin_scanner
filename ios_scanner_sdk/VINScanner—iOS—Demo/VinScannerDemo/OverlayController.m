@@ -48,6 +48,16 @@
 	codeLabel.hidden = YES;
 }
 
+-(BOOL) shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return (1 << UIInterfaceOrientationLandscapeLeft)|(1 << UIInterfaceOrientationLandscapeRight);
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
 	// Return YES for supported orientations
 	

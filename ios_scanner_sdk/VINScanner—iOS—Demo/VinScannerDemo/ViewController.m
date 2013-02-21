@@ -26,7 +26,20 @@
 
 - (void)dealloc{
 	self.pickerController = nil;
+	[super dealloc];
 }
+
+-(BOOL) shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger) supportedInterfaceOrientations
+{   // UIInterfaceOrientationMaskLandscape
+    return UIInterfaceOrientationMaskAll;
+//    return (1 << UIInterfaceOrientationLandscapeLeft)|(1 << UIInterfaceOrientationLandscapeRight);
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
 	return YES;
 }
