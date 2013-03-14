@@ -1,9 +1,10 @@
 package com.bees4honey.vinscanner;
 
+import com.bees4honey.vinscanner.example.R;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -11,7 +12,7 @@ import android.view.View;
 
 // Class for dilspaying elements on screen
 public class ViewFinder extends View 
-{	
+{
 	private final android.graphics.Rect box;
 	private android.graphics.Rect clipRect;		
 	private final int darkColor; 
@@ -33,12 +34,15 @@ public class ViewFinder extends View
 		running = false;		// when creating launch is not done
 		paint = new Paint();		// init drawing object
 		box = new Rect();		// rectangle for temporary operations
+
+		// get application resources
+		Resources res = getResources();
 		
 		// set colors 
-		maskColor = Color.parseColor("#CC444444");
-		laserColor = Color.parseColor("#FF0000");
-		darkColor = Color.parseColor("#333333");
-		lightColor = Color.parseColor("#AAAAAA");
+		maskColor = res.getColor(R.color.viewfinder_mask);
+		laserColor = res.getColor(R.color.viewfinder_laser);
+		darkColor = res.getColor( R.color.viewfinder_dark_line );
+		lightColor = res.getColor(R.color.viewfinder_light_line);
 	}
 	
 	// method returns flag of work state

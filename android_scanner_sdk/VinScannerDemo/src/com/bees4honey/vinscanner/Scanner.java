@@ -1,4 +1,4 @@
-package com.bees4honey.vinbarscanner;
+package com.bees4honey.vinscanner;
 
 import java.io.FileDescriptor;
 import java.util.List;
@@ -31,7 +31,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.bees4honey.vinscanner.B4HScanner;
 import com.bees4honey.vinscanner.example.R;
 
 public class Scanner 

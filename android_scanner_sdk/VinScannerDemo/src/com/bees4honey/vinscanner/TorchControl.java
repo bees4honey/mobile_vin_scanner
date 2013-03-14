@@ -1,4 +1,4 @@
-package com.bees4honey.vinbarscanner;
+package com.bees4honey.vinscanner;
 
 import java.lang.reflect.Method;
 import android.os.IBinder;

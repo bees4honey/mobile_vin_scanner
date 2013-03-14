@@ -1,4 +1,4 @@
-package com.bees4honey.vinbarscanner;
+package com.bees4honey.vinscanner;
 
 import com.bees4honey.vinscanner.example.R;
 
