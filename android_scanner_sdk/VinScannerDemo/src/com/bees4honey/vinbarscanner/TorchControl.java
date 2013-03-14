@@ -2,7 +2,6 @@ package com.bees4honey.vinbarscanner;
 
 import java.lang.reflect.Method;
 import android.os.IBinder;
-import com.bees4honey.vinbarscanner.R;
 
 public class TorchControl {
 

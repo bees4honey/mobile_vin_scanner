@@ -3,7 +3,6 @@ package com.bees4honey.vinbarscanner;
 import android.graphics.Matrix;
 import android.view.View;
 import android.view.animation.Transformation;
-import com.bees4honey.vinbarscanner.R;
 
 // Class for controlling screen turns
 public class Rotator extends android.widget.FrameLayout

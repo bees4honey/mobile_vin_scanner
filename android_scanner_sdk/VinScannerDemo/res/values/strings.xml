@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="app_name">VIN Scanner Demo</string>
+    <string name="app_name">VIN Scanner Example</string>
 	<color name="viewfinder_dark_line">#333333</color>
 	<item type="id" name="decode" format="integer">2131099648</item>
 	<item name="decoded" type="id" format="integer">0x7f060003</item>

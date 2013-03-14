@@ -1,6 +1,6 @@
 package com.bees4honey.vinbarscanner;
 
-import com.bees4honey.vinbarscanner.R;
+import com.bees4honey.vinscanner.example.R;
 
 import android.content.Context;
 import android.content.res.Resources;

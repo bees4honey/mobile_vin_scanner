@@ -32,7 +32,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.bees4honey.vinscanner.B4HScanner;
-import com.bees4honey.vinbarscanner.R;
+import com.bees4honey.vinscanner.example.R;
 
 public class Scanner 
 	extends Activity implements SurfaceHolder.Callback, SensorEventListener
@@ -69,6 +69,7 @@ public class Scanner
 	public Integer frameCount = 0;
 
 	private final Camera.PreviewCallback cameraPreviewCallback;
+	Toast vincode;
 	
 	/**************************************************************************/	
 
@@ -159,19 +160,23 @@ public class Scanner
 		{
 			@Override
 			public void handleMessage(Message msg) {
+				
 				switch( msg.what )
 				{
 					case R.id.decode:
+						Log.d("tag", "decode");
 						// message called when getting image from camera
 						Scanner.this.decode( (byte[]) msg.obj );
 						break;
 
 					case R.id.focused:
+						Log.d("tag", "focused");
 						// message called when autofocusing
 						Scanner.this.lastAutofocus = System.currentTimeMillis() - AUTOFOCUS_TIMEOUT + AUTOFOCUS_DELAY;
 						break;
 					
 					case R.id.TorchOnOff:
+						Log.d("tag", "TorchOnOff");
 						Scanner.this.camera.setPreviewCallback( null );
 						
 						if( Scanner.this.torchControl != null )
@@ -211,10 +216,7 @@ public class Scanner
 						break;
 						
 					case R.id.decoded:
-						// message called when VIN ode is obtained successfully
-						// stop scanning
-						//setScanning(false);
-						
+						// message called when VIN code is obtained successfully						
 						// continue scanning
 						setScanning(true);
 				}
@@ -243,7 +245,7 @@ public class Scanner
 				if( isScanning() )
 				{
 					// then message is sent containing picture
-					Message msg = Scanner.this.handler.obtainMessage( R.id.decode, data );		// 32518 = 0x7F060000 = r.id.decode
+					Message msg = Scanner.this.handler.obtainMessage( R.id.decode, data );
 					Scanner.this.handler.sendMessage( msg );
 				}
 			}
@@ -260,7 +262,7 @@ public class Scanner
 				// get current time
 				long currentTime = java.lang.System.currentTimeMillis();
 
-				if( previewing )
+				if( previewing )    
 				{
 					if( isScanning() )
 					{
@@ -351,7 +353,7 @@ public class Scanner
     private void decode( byte[] data )
     {
     	int w, h;
-
+    	Log.d("tag", "call decode");
     	if( previewing )
     	{
     		if( isScanning() )
@@ -377,12 +379,12 @@ public class Scanner
     			
     			if( decodedVIN != null )
     			{
-    				// decodedVIN contains line with read codes
+    				// VIN code was successfully detected
     				
     				beepAndVibrate();	// play sound and vibrate
 
     				// show decoded vin and continue scanning
-    				Toast vincode = Toast.makeText(Scanner.this.getApplicationContext(), "VIN: " + decodedVIN.subSequence(0, decodedVIN.length()), Toast.LENGTH_LONG);
+    				vincode = Toast.makeText(Scanner.this.getApplicationContext(), "VIN: " + decodedVIN.subSequence(0, decodedVIN.length()), Toast.LENGTH_LONG);
 					vincode.show();
     				
     				// send message to another thread that code is obtained
@@ -390,7 +392,8 @@ public class Scanner
     				handler.sendMessageDelayed(msg, 4600);
     			}
     			else
-    				setScanning(true);		// restore scanning mode
+    				// restore scanning mode 
+    				setScanning(true);		
     		}
     	}
     }
@@ -646,6 +649,9 @@ public class Scanner
     	
     	setScanning(false);		// stop scanning mode
     	camera.release();		// release camera for another apps
+    	
+    	if(vincode!=null)
+    		vincode.cancel();
     	
     	// call handler of parent class
     	super.onPause();
