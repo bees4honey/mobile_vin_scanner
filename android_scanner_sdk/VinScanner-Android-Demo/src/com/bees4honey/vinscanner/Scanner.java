@@ -36,12 +36,14 @@ import com.bees4honey.vinscanner.example.R;
 public class Scanner 
 	extends Activity implements SurfaceHolder.Callback, SensorEventListener
  {
-	/**************************************************************************/	
+	/**************************************************************************/
+	private static final String TAG="Scanner";
+	
 	private static final int AUTOFOCUS_DELAY = 500;
 	private static final int AUTOFOCUS_TIMEOUT = 1500;
 	private static final int IDX_BEEP = 0;
 	private static final int IDX_VIBRATE = 1;
-
+	
 	private volatile Camera camera;
 	private final Camera.AutoFocusCallback cameraAutoFocusCallback;
 	private CountDownLatch cameraLatch;
@@ -62,7 +64,7 @@ public class Scanner
 	private ViewFinder viewfinder_view;
 	private final Runnable watchdog;
 	private Button buttonTorchOnOff;
-	
+
 	private TorchControl torchControl;
 	
 	public Integer frameCount = 0;
@@ -71,11 +73,11 @@ public class Scanner
 	Toast vincode;
 	
 	/**************************************************************************/	
-
+	
 	// class of camera work thread
 	class CameraThread extends Thread
 	{
-		android.os.Handler inner_handler;
+		android.os.Handler inner_handler; 
 		Scanner _this;
 		
 		// constructor
@@ -97,7 +99,7 @@ public class Scanner
 			handler.sendEmptyMessage( 0 );
 			try
 			{
-				join( getId());
+				interrupt();
 			}
 			catch (Exception e) {
 			}
@@ -111,7 +113,8 @@ public class Scanner
 			
 			// start camera
 			Scanner.this.camera = android.hardware.Camera.open();
-			
+			//
+			camera.startPreview();
 			// class for processing messages
 			class ThreadHandler extends Handler  
 			{
@@ -152,30 +155,27 @@ public class Scanner
 		previewing = false;
 		scanning = false;
 		lastAutofocus = 0;
-		surfaceChangedDelayed = false;
+		surfaceChangedDelayed = false; 
 		
 		// object for handling messages
 		handler = new Handler()
 		{
 			@Override
 			public void handleMessage(Message msg) {
-				
 				switch( msg.what )
 				{
 					case R.id.decode:
-						Log.d("tag", "decode");
 						// message called when getting image from camera
 						Scanner.this.decode( (byte[]) msg.obj );
 						break;
 
 					case R.id.focused:
-						Log.d("tag", "focused");
 						// message called when autofocusing
 						Scanner.this.lastAutofocus = System.currentTimeMillis() - AUTOFOCUS_TIMEOUT + AUTOFOCUS_DELAY;
 						break;
 					
 					case R.id.TorchOnOff:
-						Log.d("tag", "TorchOnOff");
+						Log.i("VinScanner", "TorchOnOff "+msg.what);
 						Scanner.this.camera.setPreviewCallback( null );
 						
 						if( Scanner.this.torchControl != null )
@@ -185,8 +185,7 @@ public class Scanner
 						}
 
 						Camera.Parameters CameraParameters = Scanner.this.camera.getParameters();
-			    	
-						if( CameraParameters.getFlashMode().compareTo( android.hardware.Camera.Parameters.FLASH_MODE_TORCH ) == 0)
+						if(CameraParameters.getFlashMode().compareTo( android.hardware.Camera.Parameters.FLASH_MODE_TORCH ) == 0)
 						{
 							Log.i("VinScanner", "Torch Off");
 							buttonTorchOnOff.setBackgroundDrawable(	getResources().getDrawable( R.drawable.light));
@@ -198,6 +197,7 @@ public class Scanner
 							buttonTorchOnOff.setBackgroundDrawable(	getResources().getDrawable( R.drawable.light_on));
 							CameraParameters.setFlashMode( android.hardware.Camera.Parameters.FLASH_MODE_TORCH);
 						}
+						
 	
 						// refresh camera settings
 						try
@@ -206,7 +206,7 @@ public class Scanner
 						}
 						catch (Exception e) 
 						{
-							Log.e("VinScanner", "torch On/Off Exception", e);
+							Log.e("VinScanner", "Torch On/Off Exception", e);
 					    	Message nextmsg = handler.obtainMessage( R.id.TorchOnOff );
 							sendMessageDelayed(nextmsg, 100);
 							Log.e("VinScanner", "send message");
@@ -215,7 +215,7 @@ public class Scanner
 						break;
 						
 					case R.id.decoded:
-						// message called when VIN code is obtained successfully						
+						// message called when VIN ode is obtained successfully
 						// continue scanning
 						setScanning(true);
 				}
@@ -244,7 +244,7 @@ public class Scanner
 				if( isScanning() )
 				{
 					// then message is sent containing picture
-					Message msg = Scanner.this.handler.obtainMessage( R.id.decode, data );
+					Message msg = Scanner.this.handler.obtainMessage( R.id.decode, data );		// 32518 = 0x7F060000 = r.id.decode
 					Scanner.this.handler.sendMessage( msg );
 				}
 			}
@@ -261,7 +261,7 @@ public class Scanner
 				// get current time
 				long currentTime = java.lang.System.currentTimeMillis();
 
-				if( previewing )    
+				if( previewing )
 				{
 					if( isScanning() )
 					{
@@ -284,7 +284,7 @@ public class Scanner
 			};
 		};
 		
-		// create and initialize object with native code
+		// create and initialize object with native code		
 		d = new B4HScanner();
 	}
 	
@@ -292,23 +292,15 @@ public class Scanner
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
-
-    	// restore app's settings
-
-//		Helper.SetContext(this);
-    	//Helper.SetSharedPreferences( PreferenceManager.getDefaultSharedPreferences(this));
-        
 		// change parameters of displayed window
 		// app is shown on full screen
-		requestWindowFeature( 1 );
+    	requestWindowFeature( 1 );
 		getWindow().addFlags( 1024 );
         
 		// bind displaying context
 		setContentView( R.layout.scan );
-	
+		
 		// init local variables for fast access to displayed elements
-		//fps_view = (TextView) findViewById(R.id.fps_view);
-		//result_view = (TextView) findViewById(R.id.result_view);
 		viewfinder_view = (ViewFinder)findViewById( R.id.viewfinder_view );
 		rotator = (Rotator) findViewById(R.id.rotate_view);
 		
@@ -320,10 +312,11 @@ public class Scanner
 		    @Override
 		    public void onClick(View v) 
 		    {
+				Log.i("VinScanner", "Messag click0");
 		    	Message msg = handler.obtainMessage( R.id.TorchOnOff );
 				handler.sendMessage( msg );
 		    }
-		  });
+		  }); 
 		
 		sensorManager = (SensorManager) getSystemService("sensor");
 
@@ -352,7 +345,7 @@ public class Scanner
     private void decode( byte[] data )
     {
     	int w, h;
-    	Log.d("tag", "call decode");
+
     	if( previewing )
     	{
     		if( isScanning() )
@@ -378,21 +371,22 @@ public class Scanner
     			
     			if( decodedVIN != null )
     			{
-    				// VIN code was successfully detected
+    				// decodedVIN contains line with read code
     				
     				beepAndVibrate();	// play sound and vibrate
 
     				// show decoded vin and continue scanning
-    				vincode = Toast.makeText(Scanner.this.getApplicationContext(), "VIN: " + decodedVIN.subSequence(0, decodedVIN.length()), Toast.LENGTH_LONG);
+    				Toast vincode = Toast.makeText(Scanner.this.getApplicationContext(), "VIN: " + decodedVIN.subSequence(0, decodedVIN.length()), Toast.LENGTH_LONG);
 					vincode.show();
+					
     				
     				// send message to another thread that code is obtained
     				Message msg = handler.obtainMessage( R.id.decoded, decodedVIN );
     				handler.sendMessageDelayed(msg, 4600);
     			}
-    			else
-    				// restore scanning mode 
-    				setScanning(true);		
+    			else {
+    				setScanning(true);		// restore scanning mode
+    			}
     		}
     	}
     }
@@ -453,7 +447,7 @@ public class Scanner
     }
 
     // Starts Preview 
-    void cameraStartPreview( android.view.SurfaceHolder pholder, int width, int height)
+	void cameraStartPreview( android.view.SurfaceHolder pholder, int width, int height)
     {
     	Log.i("VinScanner", "Camera Start Preview");
     	try
@@ -462,11 +456,11 @@ public class Scanner
 	    	
 	    	// get object with camera parameters
 	    	Camera.Parameters CameraParameters = camera.getParameters();
-
+	    	
 	    	try
 	    	{
 	    		List<String> supportedFlash = CameraParameters.getSupportedFlashModes();
-	    		if( torchControl == null && !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) )
+	    		if( torchControl == null && !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_ON) )
 	    			throw new Exception();
 	    	}
 	    	catch (Exception e) {
@@ -491,12 +485,12 @@ public class Scanner
 	    	{
 	    		CameraParameters.set(str, 2);
 	    	}
-
+ 
 	    	// turn off flash
 	    	if( torchControl != null )
 	    		torchControl.torch( false );
 	    	else
-	    		CameraParameters.set("flash-mode", android.hardware.Camera.Parameters.FLASH_MODE_OFF);
+	    		CameraParameters.set("flash-mode", android.hardware.Camera.Parameters.FLASH_MODE_OFF); 
 
 	    	// set focus mode
 	    	CameraParameters.set("focus-mode", android.hardware.Camera.Parameters.FOCUS_MODE_AUTO);
@@ -593,7 +587,7 @@ public class Scanner
     }
     
     // method called on stop/pause (e.g. when launching browser)
-    @Override
+	@Override
     protected void onPause() 
     {
     	Log.i("VinScanner", "onPause start"); 
@@ -606,6 +600,7 @@ public class Scanner
     	{	// if camera object is initialized
     		cameraThread.finish();		// finish camera thread
     		cameraThread = null;		// reset thread object
+    	
     		try
     		{
     			Thread.sleep( 200 );		// to avoid thread race
@@ -624,7 +619,8 @@ public class Scanner
 			try
 			{	
 				Camera.Parameters CameraParameters = camera.getParameters();
-				if( CameraParameters.getFlashMode().compareTo( android.hardware.Camera.Parameters.FLASH_MODE_TORCH ) == 0)
+				if( CameraParameters.getFlashMode().compareTo( android.hardware.Camera.Parameters.FLASH_MODE_TORCH ) == 0 ||
+						CameraParameters.getFlashMode().compareTo( android.hardware.Camera.Parameters.FLASH_MODE_ON ) == 0	)
 				{
 					Log.i("VinScanner", "Torch Off");
 					buttonTorchOnOff.setBackgroundDrawable(	getResources().getDrawable( R.drawable.light));
@@ -687,7 +683,8 @@ public class Scanner
 		watchdog.run();				// start task on schedule
 		
 		buttonTorchOnOff.setBackgroundDrawable(	getResources().getDrawable( R.drawable.light));
-	
+		//surfaceChangedDelayed=false;
+		
 		if( holder == null )
 		{
 			// if app is just launched
@@ -714,7 +711,7 @@ public class Scanner
 				surfaceChanged( holder, PixelFormat.OPAQUE, view.getWidth(), view.getHeight());
 			}
 		}
-    	Log.i("VinScanner", "onResume end");
+    	Log.i("VinScanner", "onResume end"); 
     }
     
     // handler of event of changing sensor location
