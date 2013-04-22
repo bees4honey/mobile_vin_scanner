@@ -1,9 +1,8 @@
 ;(function()
 {
 
-var VINBarcodeScanner = function() 
-{
-}
+var VINBarcodeScanner = function() {
+};
 
 VINBarcodeScanner.Encode = 
 {
@@ -17,7 +16,7 @@ VINBarcodeScanner.Encode =
 
 VINBarcodeScanner.prototype.scan = function(success, fail, options) 
 {
-    function successWrapper(result) 
+    function successWrapper(result)
 	{
         result.cancelled = (result.cancelled == 1)
         success.call(null, result)
@@ -39,8 +38,7 @@ VINBarcodeScanner.prototype.scan = function(success, fail, options)
   
     if ( null == options ) 
 		options = []
-
-    return Cordova.exec(successWrapper, fail, "com.bees4honey.VINBarcodeScanner", "scan", options)
+  return Cordova.exec(successWrapper, fail, "com.bees4honey.VINBarcodeScanner", "scan", options)
 }
 
 VINBarcodeScanner.prototype.encode = function(type, data, success, fail, options)
@@ -61,18 +59,10 @@ VINBarcodeScanner.prototype.encode = function(type, data, success, fail, options
     return Cordova.exec(success, fail, "com.bees4honey.VINBarcodeScanner", "encode", [{type: type, data: data, options: options}])
 }
 
-Cordova.addConstructor(function() 
-{
-    if (!window.plugins) window.plugins = {}
+if (!window.plugins) window.plugins = {}
+if (!window.plugins.VINBarcodeScanner) {
+window.plugins.VINBarcodeScanner = new VINBarcodeScanner()
 
-    if (!window.plugins.VINBarcodeScanner) 
-	{
-        window.plugins.VINBarcodeScanner = new VINBarcodeScanner()
-    }
-    else 
-	{
-        console.log("VINBarcodeScanner plugin already exists")
-    }
-})
+}
 
 })();
