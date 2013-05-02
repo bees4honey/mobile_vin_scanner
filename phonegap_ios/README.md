@@ -4,6 +4,7 @@
 1. Put "barcodescanner.js" in your "www/resources/js/" folder.
 2. Register plugin in Cordova.plist. Example is shown in "Cordova.plist" file in this repo.
 3. Copy "Plugins/" folder in your project's folder.
+4. Add "Security" and "CoreVideo" frameworks to your target.
 
 ## Usage Example
 ```javascript
