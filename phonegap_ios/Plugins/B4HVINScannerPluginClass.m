@@ -11,14 +11,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "B4HScannerController.h"
-
-
-#ifdef CORDOVA_FRAMEWORK
 #import <Cordova/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
-
+#import <objc/message.h>
 
 @class B4HVINScannerProcessor;
 @class B4HVINScannerViewController;
@@ -185,13 +179,26 @@
 
 - (void)openScannerView 
 {
-    [self.parentViewController presentModalViewController:self.scannerViewController animated:YES];
+    BOOL isIOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
+    if (isIOS5)
+        [self.parentViewController presentViewController:self.scannerViewController animated:YES completion:nil];
+    else {
+        if ([self.parentViewController respondsToSelector:@selector(presentModalViewController:animated:)])
+            objc_msgSend(self.parentViewController, sel_getUid("presentModalViewController:animated:"), self.scannerViewController, YES);
+    }
 }
 
-- (void)barcodeScanDone 
+- (void)barcodeScanDone
 {
-	[self stopScanning];
-    [self.parentViewController dismissModalViewControllerAnimated: NO];
+    [self stopScanning];
+    
+    BOOL isIOS5 = [[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0;
+    if (isIOS5)
+        [self.parentViewController dismissViewControllerAnimated:NO completion:nil];
+    else {
+        if ([self.parentViewController respondsToSelector:@selector(dismissModalViewControllerAnimated:)])
+            objc_msgSend(self.parentViewController, sel_getUid("dismissModalViewControllerAnimated:"), NO);
+    }
     
     [self performSelector:@selector(release) withObject:nil afterDelay:1];
 }
@@ -314,6 +321,11 @@
 {
     return (UIInterfaceOrientationIsLandscape(interfaceOrientation));
 } 
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskLandscape;
+}
 
 - (IBAction)cancelButtonPressed:(id)sender 
 {
