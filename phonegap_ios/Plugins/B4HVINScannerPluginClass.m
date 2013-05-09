@@ -12,6 +12,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "B4HScannerController.h"
 #import <Cordova/CDVPlugin.h>
+#import <objc/message.h>
 
 @class B4HVINScannerProcessor;
 @class B4HVINScannerViewController;
