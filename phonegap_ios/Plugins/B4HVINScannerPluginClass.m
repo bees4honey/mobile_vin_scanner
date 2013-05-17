@@ -13,11 +13,9 @@
 #import "B4HScannerController.h"
 
 
-#ifdef CORDOVA_FRAMEWORK
+
 #import <Cordova/CDVPlugin.h>
-#else
-#import "CDVPlugin.h"
-#endif
+
 
 
 @class B4HVINScannerProcessor;
@@ -74,18 +72,18 @@
 // plugin class
 @implementation B4HVINScannerPluginClass
 
-- (NSString*)isAVFoundationAvailable 
+- (NSString*)isAVFoundationAvailable
 {
     NSString* result = nil;
     Class aClass = NSClassFromString(@"AVCaptureSession");
-    if (aClass == nil) 
+    if (aClass == nil)
 	{
         return @"AVFoundation Framework is not available. VIN Scanning is not supported.";
     }
     return result;
 }
 
-- (void)scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options 
+- (void)scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
 {
     B4HVINScannerProcessor* processor;
     NSString* callback;
@@ -112,7 +110,7 @@
     NSNumber* cancelledNumber = [NSNumber numberWithInt:(cancelled?1:0)];
     NSMutableDictionary* resultDict = [[[NSMutableDictionary alloc] init] autorelease];
     [resultDict setObject:scannedCode     forKey:@"VINCode"];
-    [resultDict setObject:cancelledNumber forKey:@"isScanCancelled"];
+    [resultDict setObject:cancelledNumber forKey:@"cancelled"];
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsDictionary: resultDict];
     
     NSString* js = [result toSuccessCallbackString:callback];
@@ -140,7 +138,7 @@
 @synthesize scannerViewController = _viewController;
 @synthesize alternateXib = _alternateXib;
 
-- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin callback:(NSString*)callback parentViewController:(UIViewController*)parentViewController alterateOverlayXib:(NSString *)alternateXib 
+- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin callback:(NSString*)callback parentViewController:(UIViewController*)parentViewController alterateOverlayXib:(NSString *)alternateXib
 {
     self = [super init];
     if (!self) return self;
@@ -151,7 +149,7 @@
     return self;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
     self.plugin = nil;
     self.callback = nil;
@@ -167,10 +165,10 @@
 	[super loadView];
 }
 
-- (void)scanBarcode 
+- (void)scanBarcode
 {
     NSString* errorMessage = [self checkLibraryStatus];
-    if (errorMessage) 
+    if (errorMessage)
 	{
         [self barcodeScanFailed:errorMessage];
         return;
@@ -183,12 +181,12 @@
     [self performSelector:@selector(openScannerView) withObject:nil afterDelay:1];
 }
 
-- (void)openScannerView 
+- (void)openScannerView
 {
     [self.parentViewController presentModalViewController:self.scannerViewController animated:YES];
 }
 
-- (void)barcodeScanDone 
+- (void)barcodeScanDone
 {
 	[self stopScanning];
     [self.parentViewController dismissModalViewControllerAnimated: NO];
@@ -202,24 +200,24 @@
     [self.plugin returnSuccess:text cancelled:FALSE callback:self.callback];
 }
 
-- (void)barcodeScanFailed:(NSString*)message 
+- (void)barcodeScanFailed:(NSString*)message
 {
     [self barcodeScanDone];
     [self.plugin returnError:message callback:self.callback];
 }
 
-- (void)barcodeScanCancelled 
+- (void)barcodeScanCancelled
 {
     [self barcodeScanDone];
     [self.plugin returnSuccess:@"" cancelled:TRUE callback:self.callback];
 }
 
-- (NSString*)checkLibraryStatus 
+- (NSString*)checkLibraryStatus
 {
 	B4HScannerLibraryStatus scannerStatus = [self CheckReadyStatus];
 	
 	NSString *errorDescription = nil;
-	switch (scannerStatus) 
+	switch (scannerStatus)
 	{
 		case B4HState_WrongLinkingOptions:
 			errorDescription = @"Scanner is not ready due to wrong linking options";
@@ -245,7 +243,7 @@
 			errorDescription = nil;
 			break;
 	}
-
+    
 	return errorDescription;
 }
 
@@ -270,12 +268,12 @@
     return self;
 }
 
-- (void)dealloc 
+- (void)dealloc
 {
     self.view = nil;
     self.processor = nil;
     self.alternateXib = nil;
-    self.overlayView = nil; 
+    self.overlayView = nil;
 	self.ledButton = nil;
     [super dealloc];
 }
@@ -291,7 +289,7 @@
 	[self.processor performSelector:@selector(barcodeScanSucceeded:) withObject:code afterDelay:0];
 }
 
-- (void)loadView 
+- (void)loadView
 {
     self.view = [[[UIView alloc] initWithFrame: self.processor.parentViewController.view.frame] autorelease];
 	[self.view addSubview:self.processor.view];
@@ -304,18 +302,18 @@
 	[self.processor startScanning];
 }
 
-- (void)viewDidAppear:(BOOL)animated 
+- (void)viewDidAppear:(BOOL)animated
 {
 	//[self.processor startScanning];
     [super viewDidAppear:animated];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (UIInterfaceOrientationIsLandscape(interfaceOrientation));
-} 
+}
 
-- (IBAction)cancelButtonPressed:(id)sender 
+- (IBAction)cancelButtonPressed:(id)sender
 {
     [self.processor performSelector:@selector(barcodeScanCancelled) withObject:nil afterDelay:0];
 }
@@ -325,15 +323,15 @@
 	NSError *error;
 	
 	AVCaptureDevice *capDevice = [AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeVideo];
-	if (capDevice.hasTorch) 
+	if (capDevice.hasTorch)
 	{
 		[capDevice lockForConfiguration: &error];
-		if (capDevice.torchMode == AVCaptureTorchModeOff && [capDevice isTorchModeSupported: AVCaptureTorchModeOn]) 
+		if (capDevice.torchMode == AVCaptureTorchModeOff && [capDevice isTorchModeSupported: AVCaptureTorchModeOn])
 		{
 			capDevice.torchMode = AVCaptureTorchModeOn;
 			[self.ledButton setSelected: YES];
 		}
-		else 
+		else
 		{
 			capDevice.torchMode = AVCaptureTorchModeOff;
 			[self.ledButton setSelected: NO];
@@ -342,7 +340,7 @@
 	}
 }
 
-- (UIView *)buildOverlayViewFromXib 
+- (UIView *)buildOverlayViewFromXib
 {
     [[NSBundle mainBundle] loadNibNamed:self.alternateXib owner:self options:NULL];
     
@@ -360,10 +358,10 @@
     bounds = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
 	[self.overlayView setFrame:bounds];
     
-    return self.overlayView;        
+    return self.overlayView;
 }
 
-- (UIView*)buildOverlayView 
+- (UIView*)buildOverlayView
 {
     if ( nil != self.alternateXib )
     {
@@ -396,7 +394,7 @@
     CGRect  rectArea       = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
     [toolbar setFrame:rectArea];
     
-    [overlayView addSubview: toolbar];	
+    [overlayView addSubview: toolbar];
     return overlayView;
 }
 

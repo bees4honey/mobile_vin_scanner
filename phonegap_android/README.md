@@ -9,19 +9,7 @@
 	import <your_package_name>.R;
 
 ## Usage Example
-```javascript
-window.plugins.VINBarcodeScanner.scan(function(result) {
-
-			if (result.text && result.text.trim().length > 0) {
-				//VIN number returned successfully;
-			} else {
-				//VIN number is empty - try again;
-			}
-
-		}, function(error) {
-			//error occurred while scanning;
-		});
-```		
+5. Usage example you can see in index.html. 	
 		
 ## Licensing & Support
 
