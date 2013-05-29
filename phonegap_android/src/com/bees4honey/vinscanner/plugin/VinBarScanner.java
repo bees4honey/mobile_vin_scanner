@@ -6,20 +6,19 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 
-import org.apache.cordova.api.Plugin;
-import org.apache.cordova.api.PluginResult;
+import org.apache.cordova.api.CallbackContext;
+import org.apache.cordova.api.CordovaPlugin;
 
 /**
  * This calls out to the VinBarSacanner and returns the result.
  */
-public class VinBarScanner extends Plugin {
+public class VinBarScanner extends CordovaPlugin {
 
     public static final int REQUEST_CODE = 0x0ba7c0de;
 
     public String callback;
-
+    private CallbackContext cbContext;
     /**
      * Executes the request and returns PluginResult.
      *
@@ -28,17 +27,16 @@ public class VinBarScanner extends Plugin {
      * @param callbackId    The callback id used when calling back into JavaScript.
      * @return              A PluginResult object with a status and message.
      */
-    public PluginResult execute(String action, JSONArray args, String callbackId) {
-        this.callback = callbackId;
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+        this.cbContext = callbackContext;
 
         if (action.equals("scan")) {
             scan();
         } else {
-            return new PluginResult(PluginResult.Status.INVALID_ACTION);
+        	callbackContext.error("Invalid Action");
+            return false;
         }
-        PluginResult r = new PluginResult(PluginResult.Status.NO_RESULT);
-        r.setKeepCallback(true);
-        return r;
+        return true;
     }
 
 
@@ -46,7 +44,7 @@ public class VinBarScanner extends Plugin {
         Intent intentScan = new Intent("com.bees4honey.vinscanner.plugin.SCAN");
         intentScan.addCategory(Intent.CATEGORY_DEFAULT);
 
-        this.ctx.startActivityForResult((Plugin) this, intentScan, REQUEST_CODE);
+        this.cordova.startActivityForResult((CordovaPlugin) this, intentScan, REQUEST_CODE);
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -59,7 +57,7 @@ public class VinBarScanner extends Plugin {
                 } catch(JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
                 }
-                this.success(new PluginResult(PluginResult.Status.OK, obj), this.callback);
+                this.cbContext.success(obj);
             } if (resultCode == Activity.RESULT_CANCELED) {
                 JSONObject obj = new JSONObject();
                 try {
@@ -68,9 +66,9 @@ public class VinBarScanner extends Plugin {
                 } catch(JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
                 }
-                this.success(new PluginResult(PluginResult.Status.OK, obj), this.callback);
+                this.cbContext.success(obj);
             } else {
-                this.error(new PluginResult(PluginResult.Status.ERROR), this.callback);
+                this.cbContext.error("Invalid Activity");
             }
         }
     }
