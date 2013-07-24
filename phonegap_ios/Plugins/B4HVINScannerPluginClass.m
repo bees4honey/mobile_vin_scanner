@@ -14,7 +14,7 @@
 
 
 
-#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDV.h>
 
 
 
@@ -27,7 +27,7 @@
 @interface B4HVINScannerPluginClass : CDVPlugin {}
 
 - (NSString*)isAVFoundationAvailable;
-- (void)scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void)scan:(CDVInvokedUrlCommand*)command;
 - (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled callback:(NSString*)callback;
 - (void)returnError:(NSString*)message callback:(NSString*)callback;
 
@@ -83,27 +83,24 @@
     return result;
 }
 
-- (void)scan:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options
+- (void)scan:(CDVInvokedUrlCommand*)command
 {
     B4HVINScannerProcessor* processor;
-    NSString* callback;
     NSString* AVFoundationErrorMessage;
-    callback = [arguments objectAtIndex:0];
     NSString *overlayXib = nil;
-    if ( [arguments count] == 2 )
-    {
-        overlayXib = [arguments objectAtIndex:1];
+    if ( [command.arguments count] == 1 ) {
+        overlayXib = [command.arguments objectAtIndex:0];
     }
     AVFoundationErrorMessage = [self isAVFoundationAvailable];
     if (AVFoundationErrorMessage)
 	{
-        [self returnError:AVFoundationErrorMessage callback:callback];
+        [self returnError:AVFoundationErrorMessage callback:command.callbackId];
         return;
     }
-    
-    processor = [[B4HVINScannerProcessor alloc] initWithPlugin:self callback:callback parentViewController:self.viewController alterateOverlayXib:overlayXib];
+    processor = [[B4HVINScannerProcessor alloc] initWithPlugin:self callback:command.callbackId parentViewController:self.viewController alterateOverlayXib:overlayXib];
     [processor performSelector:@selector(scanBarcode) withObject:nil afterDelay:0];
 }
+
 
 - (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled callback:(NSString*)callback //code successfully scanned or scan was cancelled
 {
@@ -112,19 +109,13 @@
     [resultDict setObject:scannedCode     forKey:@"VINCode"];
     [resultDict setObject:cancelledNumber forKey:@"cancelled"];
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsDictionary: resultDict];
-    
-    NSString* js = [result toSuccessCallbackString:callback];
-    
-    [self writeJavascript:js];
+    [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
 
 - (void)returnError:(NSString*)message callback:(NSString*)callback //error detected
 {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString: message];
-    
-    NSString* js = [result toErrorCallbackString:callback];
-    
-    [self writeJavascript:js];
+    [self.commandDelegate sendPluginResult:result callbackId:callback];
 }
 
 @end
