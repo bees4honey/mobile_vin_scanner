@@ -18,7 +18,7 @@ There are two ways to try our VIN scanning technology.
 
 ### Try our free apps:
 1. iOS https://itunes.apple.com/us/app/vin-barcode-scanner/id497948900?mt=8
-2. Android coming very soon
+2. Android https://play.google.com/store/apps/details?id=com.bees4honey.vinscanner
 
 ### Download appropriate project to try it in your app:
 1. ios_scanner - native iOS project, which you can build and try. 
