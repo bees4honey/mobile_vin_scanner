@@ -4,12 +4,10 @@
 
 1. Please copy contents of "manifest.txt" into your "AndroidManifest.xml" between  `` `<manifest>` `` and `` `</manifest>` `` tags.
 2. Please add into your "res/xml/config.xml" 
+    `<feature name="VinBarScanner">`
+      `<param name="android-package" value="com.bees4honey.vinscanner.plugin.VinBarScanner"/>`
+    `</feature>`
 
-``
-    <feature name="VinBarScanner">
-      <param name="android-package" value="com.bees4honey.vinscanner.plugin.VinBarScanner"/>
-    </feature>
-``
 3. Copy "assets", "libs", "res", "src" in the root directory of your project.
 4. Specify your package name in "/src/com/bees4honey/vinscanner/Scanner.java" in the following line (second from top):
 	`` `import <your_package_name>.R;` ``
