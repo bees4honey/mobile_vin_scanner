@@ -2,7 +2,7 @@
 
 ## Installing Android VIN Scanner Plugin
 
-1. Please copy contents of "manifest.txt" into your "AndroidManifest.xml" between  `` `<manifest>` `` and `` `</manifest>` `` tags.
+1. Please copy contents of "manifest.txt" into your "AndroidManifest.xml" between  `` `<application>` `` and `` `</application>` `` tags. Please note that USES-PERMISSIONS should be outside `` `<application>` `` tag.
 2. Please add into your "res/xml/config.xml"       
     `<feature name="VinBarScanner">`       
       `<param name="android-package" value="com.bees4honey.vinscanner.plugin.VinBarScanner"/>`       
