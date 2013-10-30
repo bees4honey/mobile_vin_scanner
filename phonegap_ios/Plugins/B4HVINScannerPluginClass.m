@@ -304,6 +304,11 @@
     return (UIInterfaceOrientationIsLandscape(interfaceOrientation));
 }
 
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return (1 << UIInterfaceOrientationLandscapeLeft)|(1 << UIInterfaceOrientationLandscapeRight);
+}
+
 - (IBAction)cancelButtonPressed:(id)sender
 {
     [self.processor performSelector:@selector(barcodeScanCancelled) withObject:nil afterDelay:0];

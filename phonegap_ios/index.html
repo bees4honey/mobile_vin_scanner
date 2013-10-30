@@ -23,7 +23,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
         <meta charset="utf-8">
-            <script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
+            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
             <script type="text/javascript" charset="utf-8" src="js/barcodescanner.js"></script>
             <script type="text/javascript">
                 function onBodyLoad()
@@ -38,7 +38,7 @@
                     createButton.addEventListener("click", clickCreate, false);
                 }
                 function clickScan() {
-                    window.plugins.VINBarcodeScanner.scan(scannerSuccess, scannerFailure);
+                    window.plugins.VINBarcodeScanner.scan(scannerSuccess, scannerFailure, ["ScannerMainViewController"]);
                     
                 }
                 
