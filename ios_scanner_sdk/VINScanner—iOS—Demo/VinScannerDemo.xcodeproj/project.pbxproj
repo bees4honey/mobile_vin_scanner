@@ -17,7 +17,7 @@
 		551C7A7514BD52DB003AAB3E /* OverlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551C7A7314BD52DB003AAB3E /* OverlayController.xib */; };
 		55420CB514BAF696000ACAE6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */; };
 		55BAB33614CD423100985416 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BAB33514CD423100985416 /* QuartzCore.framework */; };
-		55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C71AB314DAA65400B56F2F /* libB4HVINScanner.a */; };
+		55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C71AB314DAA65400B56F2F /* libB4HVINScanner.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		7A066DB31490D4AE007C5A49 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A066DB11490D4AE007C5A49 /* Icon.png */; };
 		7A85EDF5148F7864002B5517 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EDF4148F7864002B5517 /* UIKit.framework */; };
 		7A85EDF7148F7864002B5517 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EDF6148F7864002B5517 /* Foundation.framework */; };
@@ -28,8 +28,11 @@
 		7A85EE0B148F7864002B5517 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE09148F7864002B5517 /* ViewController.xib */; };
 		7A85EE17148F7AB7002B5517 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE16148F7AB7002B5517 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7A85EE1B148F7AFF002B5517 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */; };
-		7A85EE1F148F7E38002B5517 /* demoBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE1E148F7E38002B5517 /* demoBackground.png */; };
 		7A85EE26148F8476002B5517 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE25148F8476002B5517 /* light.png */; };
+		BBA420B0170129140036AC50 /* ScannerOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA420AF170129140036AC50 /* ScannerOverlayController.m */; };
+		BBA420B4170134380036AC50 /* demoBackgroundHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B2170134380036AC50 /* demoBackgroundHorizontal.png */; };
+		BBA420B5170134380036AC50 /* demoBackgroundVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B3170134380036AC50 /* demoBackgroundVertical.png */; };
+		BBA420B717013A7C0036AC50 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B617013A7C0036AC50 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,8 +64,12 @@
 		7A85EE16148F7AB7002B5517 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		7A85EE1E148F7E38002B5517 /* demoBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoBackground.png; sourceTree = "<group>"; };
 		7A85EE25148F8476002B5517 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
+		BBA420AF170129140036AC50 /* ScannerOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerOverlayController.m; sourceTree = "<group>"; };
+		BBA420B11701299D0036AC50 /* ScannerOverlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScannerOverlayController.h; sourceTree = "<group>"; };
+		BBA420B2170134380036AC50 /* demoBackgroundHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoBackgroundHorizontal.png; sourceTree = "<group>"; };
+		BBA420B3170134380036AC50 /* demoBackgroundVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoBackgroundVertical.png; sourceTree = "<group>"; };
+		BBA420B617013A7C0036AC50 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */,
 				55BAB33614CD423100985416 /* QuartzCore.framework in Frameworks */,
 				550DC66814C43FF500D2B80B /* Security.framework in Frameworks */,
 				550DC66214C4250E00D2B80B /* MobileCoreServices.framework in Frameworks */,
@@ -78,7 +86,6 @@
 				7A85EE17148F7AB7002B5517 /* AVFoundation.framework in Frameworks */,
 				7A85EDF5148F7864002B5517 /* UIKit.framework in Frameworks */,
 				7A85EDF7148F7864002B5517 /* Foundation.framework in Frameworks */,
-				55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +98,7 @@
 				2D03EC2414DA9D81005F6399 /* iTunesArtwork */,
 				2D03EC2514DA9D81005F6399 /* Default.png */,
 				2D03EC2614DA9D81005F6399 /* Default@2x.png */,
+				BBA420B617013A7C0036AC50 /* Default-568h@2x.png */,
 				2D03EC2714DA9D81005F6399 /* Icon@2x.png */,
 				7A066DB11490D4AE007C5A49 /* Icon.png */,
 				7A85EDFA148F7864002B5517 /* VinScannerDemo */,
@@ -132,6 +140,8 @@
 				7A85EE06148F7864002B5517 /* ViewController.h */,
 				7A85EE07148F7864002B5517 /* ViewController.m */,
 				7A85EE09148F7864002B5517 /* ViewController.xib */,
+				BBA420B11701299D0036AC50 /* ScannerOverlayController.h */,
+				BBA420AF170129140036AC50 /* ScannerOverlayController.m */,
 				551C7A7114BD52DB003AAB3E /* OverlayController.h */,
 				551C7A7214BD52DB003AAB3E /* OverlayController.m */,
 				551C7A7314BD52DB003AAB3E /* OverlayController.xib */,
@@ -163,7 +173,8 @@
 		7A85EE20148F7E3E002B5517 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7A85EE1E148F7E38002B5517 /* demoBackground.png */,
+				BBA420B2170134380036AC50 /* demoBackgroundHorizontal.png */,
+				BBA420B3170134380036AC50 /* demoBackgroundVertical.png */,
 				7A85EE25148F8476002B5517 /* light.png */,
 			);
 			name = Resources;
@@ -195,7 +206,12 @@
 		7A85EDE7148F7864002B5517 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					7A85EDEF148F7864002B5517 = {
+						DevelopmentTeam = ANJ832G8SK;
+					};
+				};
 			};
 			buildConfigurationList = 7A85EDEA148F7864002B5517 /* Build configuration list for PBXProject "VinScannerDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,7 +237,6 @@
 			files = (
 				7A85EDFF148F7864002B5517 /* InfoPlist.strings in Resources */,
 				7A85EE0B148F7864002B5517 /* ViewController.xib in Resources */,
-				7A85EE1F148F7E38002B5517 /* demoBackground.png in Resources */,
 				7A85EE26148F8476002B5517 /* light.png in Resources */,
 				7A066DB31490D4AE007C5A49 /* Icon.png in Resources */,
 				551C7A7514BD52DB003AAB3E /* OverlayController.xib in Resources */,
@@ -229,6 +244,9 @@
 				2D03EC2914DA9D82005F6399 /* Default.png in Resources */,
 				2D03EC2A14DA9D82005F6399 /* Default@2x.png in Resources */,
 				2D03EC2B14DA9D82005F6399 /* Icon@2x.png in Resources */,
+				BBA420B4170134380036AC50 /* demoBackgroundHorizontal.png in Resources */,
+				BBA420B5170134380036AC50 /* demoBackgroundVertical.png in Resources */,
+				BBA420B717013A7C0036AC50 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +261,7 @@
 				7A85EE05148F7864002B5517 /* AppDelegate.m in Sources */,
 				7A85EE08148F7864002B5517 /* ViewController.m in Sources */,
 				551C7A7414BD52DB003AAB3E /* OverlayController.m in Sources */,
+				BBA420B0170129140036AC50 /* ScannerOverlayController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,47 +290,32 @@
 		7A066DAA1490CC6E007C5A49 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mikhail Katomine";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
+				GCC_THUMB_SUPPORT = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "100B3DD4-A1B3-44F7-8B98-C65B6182C46A";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = AdHoc;
 		};
 		7A066DAB1490CC6E007C5A49 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mikhail Katomine";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/VinScannerDemo\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ScanerLibrary-fjlzoattgmxlhvcvxvzktuuayyzt/Build/Products/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "100B3DD4-A1B3-44F7-8B98-C65B6182C46A";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = AdHoc;
@@ -319,74 +323,50 @@
 		7A85EE0C148F7864002B5517 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				GCC_THUMB_SUPPORT = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		7A85EE0D148F7864002B5517 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
+				GCC_THUMB_SUPPORT = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
 				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		7A85EE0F148F7864002B5517 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/VinScannerDemo\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ScanerLibrary-fjlzoattgmxlhvcvxvzktuuayyzt/Build/Products/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -394,22 +374,19 @@
 		7A85EE10148F7864002B5517 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv6,
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/VinScannerDemo\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ScanerLibrary-fjlzoattgmxlhvcvxvzktuuayyzt/Build/Products/Release-iphoneos\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

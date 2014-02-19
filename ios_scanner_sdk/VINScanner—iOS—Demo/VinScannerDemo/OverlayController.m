@@ -11,7 +11,6 @@
 
 @implementation OverlayController
 
-
 - (id)initWithNibName: (NSString *) nibNameOrNil bundle: (NSBundle *) nibBundleOrNil {
 	self = [super initWithNibName: nibNameOrNil bundle: nibBundleOrNil];
 	if (self) {
@@ -42,7 +41,6 @@
 	if ([AVCaptureDevice defaultDeviceWithMediaType: AVMediaTypeVideo].hasTorch)
 		ledButton.hidden = NO;
 }
-
 - (void)viewWillAppear: (BOOL) animated {
 	[super viewWillAppear:animated];
 	codeLabel.hidden = YES;
@@ -55,14 +53,11 @@
 
 -(NSUInteger)supportedInterfaceOrientations
 {
-    return (1 << UIInterfaceOrientationLandscapeLeft)|(1 << UIInterfaceOrientationLandscapeRight);
+    return UIInterfaceOrientationMaskAll;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
-	// Return YES for supported orientations
-	
-	// autorotation of overlay depends on ScannerLibrary - only landscape right/left orientation supported
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return YES;
 }
 
 - (void)scanner: (B4HScannerController *) scanner gotCode: (NSString *) _code {
@@ -90,6 +85,7 @@
 		[capDevice unlockForConfiguration];
 	}
 }
+
 - (void)toggleScan {
 	NSLog(@"%d", [self.parentScanner CheckReadyStatus]);
 	if ([self.parentScanner isRunning]) {
@@ -97,7 +93,8 @@
 		[startButton setTitle: @"start" forState: UIControlStateNormal];
 	}
 	else {
-		[self.parentScanner startScanning];
+		[self.parentScanner startScanningWithOrientation:B4HOrientationHorizontal];
+        background.image = [UIImage imageNamed:@"demoBackgroundHorizontal.png"];
 		[startButton setTitle: @"stop" forState: UIControlStateNormal];
 	}
 	pauseLabel.hidden = !pauseLabel.hidden;
@@ -111,4 +108,17 @@
 	codeLabel.hidden = YES;
 }
 
+- (void) changeScanOrientation
+{   
+    if (self.parentScanner.scanOrientation == B4HOrientationVertical) {
+        // set horizontal scan orientation
+        self.parentScanner.scanOrientation = B4HOrientationHorizontal;
+        background.image = [UIImage imageNamed:@"demoBackgroundHorizontal.png"];
+    } else {
+        // set vertical scan orientation
+        self.parentScanner.scanOrientation = B4HOrientationVertical;
+        background.image = [UIImage imageNamed:@"demoBackgroundVertical.png"];
+    }
+    
+}
 @end

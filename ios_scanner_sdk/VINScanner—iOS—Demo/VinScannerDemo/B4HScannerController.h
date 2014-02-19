@@ -3,7 +3,7 @@
 //	ScannerLibrary
 //
 //	Created by bee4honey developer.
-//	Copyright (c) 2012 bees4honey. All rights reserved.
+//	Copyright (c) 2014 bees4honey. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -22,6 +22,13 @@ typedef enum
 }
 B4HScannerLibraryStatus;
 
+typedef enum
+{
+	B4HOrientationHorizontal = 0,
+	B4HOrientationVertical = 1
+}
+B4HScannerOrientation;
+
 @protocol B4HScannerDelegate;
 @class B4HScannerController;
 
@@ -34,6 +41,8 @@ B4HScannerLibraryStatus;
 
 //	Main class to use in your application for capturing VIN codes
 @interface B4HScannerController : UIViewController
+- (id)initWithOrientation:(B4HScannerOrientation) ScanOrientation;
+- (void)startScanningWithOrientation:(B4HScannerOrientation) orientation;
 - (BOOL) isRunning;
 - (void) startScanning;
 - (void) stopScanning;
@@ -41,6 +50,7 @@ B4HScannerLibraryStatus;
 
 @property (nonatomic, retain) B4HCameraOverlayViewController *overlay;
 @property (nonatomic, assign) id <B4HScannerDelegate> delegate;
+@property (nonatomic, assign) B4HScannerOrientation scanOrientation;
 
 @end
 
