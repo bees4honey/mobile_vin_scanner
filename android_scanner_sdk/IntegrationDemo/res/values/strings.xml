@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Integration Demo</string>
+    <string name="scanned_vin">Scanned VIN:</string>
+    <string name="scan_vin">Scan VIN</string>
+</resources>
