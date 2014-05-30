@@ -392,7 +392,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
 
             try {
                 List<String> supportedFlash = cameraParameters.getSupportedFlashModes();
-                if (torchControl == null && !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_ON))
+                if (torchControl == null && (supportedFlash == null ||
+                                             !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_ON)))
                     throw new Exception();
             } catch (Exception e) {
                 buttonTorchOnOff.setVisibility(View.INVISIBLE);
@@ -596,6 +597,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         }
 
         // start camera thread
+	    camera = Camera.open();
+
         cameraLatch = new CountDownLatch(1);
         cameraThread = new CameraThread(this);
         cameraThread.start();
@@ -830,9 +833,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             android.os.Looper.prepare();
 
             // start camera
-            Scanner.this.camera = android.hardware.Camera.open();
-            //
-            camera.startPreview();
+            //Scanner.this.camera = android.hardware.Camera.open();
+            //camera.startPreview();
+
             // class for processing messages
             class ThreadHandler extends Handler {
                 private final Camera val;
