@@ -16,7 +16,6 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import <your_package_name>.R;
 
 import java.io.FileDescriptor;
 import java.util.List;
@@ -111,11 +110,15 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                         if (CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0) {
                             Log.i(TAG, "Torch Off");
                             torchIsOn = false;
-                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                            //buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                            int resourceId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
                             CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
                         } else {
                             Log.i(TAG, "Torch On");
-                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+                            //buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+                            int resourceId = getApplication().getResources().getIdentifier("light_on", "drawable", getApplication().getPackageName());;
+                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
                             torchIsOn = true;
                             CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_TORCH);
                         }
@@ -206,7 +209,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // bind displaying context
-        setContentView(R.layout.scan);
+        //setContentView(R.layout.scan);
+        int scanId = getApplication().getResources().getIdentifier("scan", "layout", getApplication().getPackageName());;
+        setContentView(scanId);
 
         //Activity is only enabled for landscape layout.
         //Default landscape angle diff from default portrait orientation is 270 degrees
@@ -214,8 +219,10 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         //register orientation listener to handle orientation changes
         orientationListener = new ScannerOrientationListener(this);
 
-        // init local variables for fast access to displayed elements
-        finderView = (ViewFinder) findViewById(R.id.viewfinder_view);
+        // init local variables for fast access to displayed elements        
+        //finderView = (ViewFinder) findViewById(R.id.viewfinder_view);
+        int viewfinderId = getApplication().getResources().getIdentifier("viewfinder_view", "id", getApplication().getPackageName());;
+        finderView = (ViewFinder) findViewById(viewfinderId);
 
         try {
             torchControl = new TorchControl();
@@ -223,7 +230,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             torchControl = null;
         }
 
-        buttonTorchOnOff = (ImageButton) this.findViewById(R.id.TorchButton);
+        //buttonTorchOnOff = (ImageButton) this.findViewById(R.id.TorchButton);
+        int torchButtonId = getApplication().getResources().getIdentifier("TorchButton", "id", getApplication().getPackageName());
+        buttonTorchOnOff = (ImageButton) this.findViewById(torchButtonId);
         buttonTorchOnOff.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -233,7 +242,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         });
 
         scanHorizontally = true;
-        buttonScanDirection = (ImageButton) findViewById(R.id.orientationButton);
+        //buttonScanDirection = (ImageButton) findViewById(R.id.orientationButton);
+        int orientationButtonId = getApplication().getResources().getIdentifier("orientationButton", "id", getApplication().getPackageName());
+        buttonScanDirection = (ImageButton) findViewById(orientationButtonId);
         buttonScanDirection.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -341,7 +352,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             Resources res = getResources();
 
             try {
-                AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(R.raw.scanned);
+                //AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(R.raw.scanned);
+                int scannedId = getApplication().getResources().getIdentifier("scanned", "raw", getApplication().getPackageName());
+                AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(scannedId);
                 // get file descriptor
                 FileDescriptor fileDescriptor = assetFileDescriptor.getFileDescriptor();
 
@@ -560,7 +573,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 if (CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0 ||
                         CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_ON) == 0) {
                     Log.i(TAG, "Torch Off");
-                    buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                    //buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                    int lightId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+                    buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(lightId));
                     CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
                     torchIsOn = false;
 
@@ -614,13 +629,17 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         setScanning(true);            // app goes to scanning mode immediately
         watchdog.run();                // start task on schedule
 
-        buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+        //buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+        int lightId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+        buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(lightId));
         torchIsOn = false;
 
         if (holder == null) {
             // if app is just launched
             // get holder to display PREVIEW
-            SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+            //SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+            int cameraViewId = getApplication().getResources().getIdentifier("camera_view", "id", getApplication().getPackageName());
+            SurfaceView view = (SurfaceView) findViewById(cameraViewId);
             SurfaceHolder surfaceHolder = view.getHolder();
 
             // set type of displaying image
@@ -635,7 +654,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 surfaceChangedDelayed = false;    // reset flag of delayed event
 
                 // restore holder work
-                SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+                //SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+                int cameraViewId = getApplication().getResources().getIdentifier("camera_view", "id", getApplication().getPackageName());
+                SurfaceView view = (SurfaceView) findViewById(cameraViewId);
                 surfaceChanged(holder, PixelFormat.OPAQUE, view.getWidth(), view.getHeight());
             }
         }
@@ -690,14 +711,20 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         }
 
         curOrientation = newOrientation;
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.rotate);
+        //Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.rotate);
+        int rotateId = getApplication().getResources().getIdentifier("rotate", "drawable", getApplication().getPackageName());
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), rotateId);
         bm = rotateBitmapForCurrentOrientation(bm);
         buttonScanDirection.setImageBitmap(bm);
 
         if (torchIsOn) {
-            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+            // buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+            int lightOnId = getApplication().getResources().getIdentifier("light_on", "drawable", getApplication().getPackageName());
+            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(lightOnId));
         } else {
-            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+            // buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+            int lightId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(lightId));
         }
     }
 
