@@ -10,10 +10,6 @@
 
 //plugin class
 @interface B4HVINScannerPluginClass : CDVPlugin {}
-
 - (NSString*)isAVFoundationAvailable;
 - (void)scan:(CDVInvokedUrlCommand*)command;
-- (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled callback:(NSString*)callback;
-- (void)returnError:(NSString*)message callback:(NSString*)callback;
-
 @end

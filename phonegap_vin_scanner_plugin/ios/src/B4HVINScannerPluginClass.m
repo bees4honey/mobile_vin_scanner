@@ -14,15 +14,21 @@
 #import "B4HVINScannerPluginClass.h"
 #import "B4HOverlayViewController.h"
 
+@interface B4HVINScannerPluginClass ()
+@property (nonatomic, strong) NSString *callbackId;
+
+- (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled;
+- (void)returnError:(NSString*)message;
+@end
+
 @interface B4HVINScannerProcessor : NSObject<B4HOverlayDelegate>
 
 
 @property (nonatomic, strong) B4HVINScannerPluginClass* plugin;
-@property (nonatomic, strong) NSString* callback;
 @property (nonatomic, strong) UIViewController* parentViewController;
 @property (nonatomic, strong) B4HOverlayViewController* scannerViewController;
 
-- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin callback:(NSString*)callback parentViewController:(UIViewController*)parentViewController;
+- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin parentViewController:(UIViewController*)parentViewController;
 - (void)scanBarcode;
 - (void)openScannerView;
 - (NSString*)checkLibraryStatus:(B4HScannerController*)scanner;
@@ -44,32 +50,33 @@
 
 - (void)scan:(CDVInvokedUrlCommand*)command
 {
+    self.callbackId = command.callbackId;
     B4HVINScannerProcessor* processor;
     NSString* AVFoundationErrorMessage;
     AVFoundationErrorMessage = [self isAVFoundationAvailable];
     if (AVFoundationErrorMessage)
 	{
-        [self returnError:AVFoundationErrorMessage callback:command.callbackId];
+        [self returnError:AVFoundationErrorMessage];
         return;
     }
-    processor = [[B4HVINScannerProcessor alloc] initWithPlugin:self callback:command.callbackId parentViewController:self.viewController];
+    processor = [[B4HVINScannerProcessor alloc] initWithPlugin:self parentViewController:self.viewController];
     [processor performSelector:@selector(scanBarcode) withObject:nil afterDelay:0];
 }
 
-- (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled callback:(NSString*)callback //code successfully scanned or scan was cancelled
+- (void)returnSuccess:(NSString*)scannedCode cancelled:(BOOL)cancelled //code successfully scanned or scan was cancelled
 {
     NSNumber* cancelledNumber = [NSNumber numberWithInt:(cancelled?1:0)];
     NSMutableDictionary* resultDict = [[NSMutableDictionary alloc] init];
     [resultDict setObject:scannedCode     forKey:@"VINCode"];
     [resultDict setObject:cancelledNumber forKey:@"cancelled"];
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsDictionary: resultDict];
-    [self.commandDelegate sendPluginResult:result callbackId:callback];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
 }
 
-- (void)returnError:(NSString*)message callback:(NSString*)callback //error detected
+- (void)returnError:(NSString*)message //error detected
 {
     CDVPluginResult* result = [CDVPluginResult resultWithStatus: CDVCommandStatus_OK messageAsString: message];
-    [self.commandDelegate sendPluginResult:result callbackId:callback];
+    [self.commandDelegate sendPluginResult:result callbackId:self.callbackId];
 }
 
 @end
@@ -78,16 +85,14 @@
 @implementation B4HVINScannerProcessor
 
 @synthesize plugin = _plugin;
-@synthesize callback = _callback;
 @synthesize parentViewController = __parentViewController;
 @synthesize scannerViewController = _viewController;
 
-- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin callback:(NSString*)callback parentViewController:(UIViewController*)parentViewController
+- (id)initWithPlugin:(B4HVINScannerPluginClass*)plugin parentViewController:(UIViewController*)parentViewController
 {
     self = [super init];
     if (!self) return self;
     self.plugin = plugin;
-    self.callback = callback;
     self.parentViewController = parentViewController;
     return self;
 }
@@ -112,30 +117,30 @@
 
 - (void)openScannerView
 {
-    [self.parentViewController presentModalViewController:self.scannerViewController animated:YES];
+    [self.parentViewController presentViewController:self.scannerViewController animated:YES completion:nil];
 }
 
 - (void)barcodeScanDone
 {
-    [self.parentViewController dismissModalViewControllerAnimated: NO];
+    [self.parentViewController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)barcodeScanSucceeded:(NSString*)text
 {
     [self barcodeScanDone];
-    [self.plugin returnSuccess:text cancelled:FALSE callback:self.callback];
+    [self.plugin returnSuccess:text cancelled:FALSE];
 }
 
 - (void)barcodeScanFailed:(NSString*)message
 {
     [self barcodeScanDone];
-    [self.plugin returnError:message callback:self.callback];
+    [self.plugin returnError:message];
 }
 
 - (void)barcodeScanCancelled
 {
     [self barcodeScanDone];
-    [self.plugin returnSuccess:@"" cancelled:TRUE callback:self.callback];
+    [self.plugin returnSuccess:@"" cancelled:TRUE];
 }
 
 - (NSString*)checkLibraryStatus:(B4HScannerController*)scanner
