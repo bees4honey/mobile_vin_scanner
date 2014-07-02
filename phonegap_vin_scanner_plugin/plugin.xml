@@ -55,6 +55,7 @@ id reference into Scanner.java before building their projects.
     <!-- copy Bees4honey Lib resources -->
     <source-file src="android/libs/armeabi/libb4hvinscanner.so" target-dir="libs/armeabi" />
     <source-file src="android/libs/armeabi-v7a/libb4hvinscanner.so" target-dir="libs/armeabi-v7a" />
+    <source-file src="android/libs/x86/libb4hvinscanner.so" target-dir="libs/x86" />
     <!-- copy Bees4honey resources (images, etc) -->
     <source-file src="android/res/raw/scanned.wav" target-dir="res/raw"/>
     <source-file src="android/res/drawable/light.png" target-dir="res/drawable"/>

@@ -1,10 +1,9 @@
 package com.bees4honey.vinscanner;
 
-import android.graphics.Color;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -37,9 +36,6 @@ public class ViewFinder extends View {
         running = false;        // when creating launch is not done
         paint = new Paint();        // init drawing object
         box = new Rect();        // rectangle for temporary operations
-
-        // get application resources
-        Resources res = getResources();
 
         // set colors
         maskColor = Color.parseColor("#CC444444");

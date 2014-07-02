@@ -2,7 +2,6 @@ package com.bees4honey.vinscanner;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.graphics.*;
@@ -16,6 +15,7 @@ import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.content.Intent;
 
 import java.io.FileDescriptor;
 import java.util.List;
@@ -219,7 +219,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         //register orientation listener to handle orientation changes
         orientationListener = new ScannerOrientationListener(this);
 
-        // init local variables for fast access to displayed elements        
+        // init local variables for fast access to displayed elements
         //finderView = (ViewFinder) findViewById(R.id.viewfinder_view);
         int viewfinderId = getApplication().getResources().getIdentifier("viewfinder_view", "id", getApplication().getPackageName());;
         finderView = (ViewFinder) findViewById(viewfinderId);
@@ -283,7 +283,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         int w, h;
 
         if (previewing) {
-            if (isScanning()) {    // when program is in preview and scanning, then CallBack is set to receive one frame
+            if (isScanning()) { // when program is in preview and scanning, then CallBack is set to receive one frame
                 camera.setOneShotPreviewCallback(cameraPreviewCallback);
             }
         }
@@ -292,9 +292,9 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             if (isScanning()) {
                 // there is data on input and program is in scanning mode
 
-                setScanning(false);                // temporary turn off scanning
-                h = previewSize.height / 3;        // calculate height of image for processing
-                w = previewSize.width;            // get image width for processing
+                setScanning(false); // temporary turn off scanning
+                h = previewSize.height / 3; // calculate height of image for processing
+                w = previewSize.width; // get image width for processing
 
                 byte[] newData = data;
                 //scanning direction has been changed so we should rotate the image we received from camera
@@ -310,7 +310,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 if (decodedVIN != null) {
                     // decodedVIN contains line with read code
 
-                    beepAndVibrate();    // play sound and vibrate
+                    beepAndVibrate(); // play sound and vibrate
 
                     finishScan((String) decodedVIN.subSequence(0, decodedVIN.length()));
 
@@ -318,7 +318,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                     Message msg = handler.obtainMessage(DECODED, decodedVIN);
                     handler.sendMessageDelayed(msg, 4600);
                 } else {
-                    setScanning(true);        // restore scanning mode
+                    setScanning(true); // restore scanning mode
                 }
             }
         }
@@ -355,6 +355,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 //AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(R.raw.scanned);
                 int scannedId = getApplication().getResources().getIdentifier("scanned", "raw", getApplication().getPackageName());
                 AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(scannedId);
+                
                 // get file descriptor
                 FileDescriptor fileDescriptor = assetFileDescriptor.getFileDescriptor();
 
@@ -406,7 +407,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             try {
                 List<String> supportedFlash = cameraParameters.getSupportedFlashModes();
                 if (torchControl == null && (supportedFlash == null ||
-                                             !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_ON)))
+                        !supportedFlash.contains(android.hardware.Camera.Parameters.FLASH_MODE_ON)))
                     throw new Exception();
             } catch (Exception e) {
                 buttonTorchOnOff.setVisibility(View.INVISIBLE);
@@ -612,7 +613,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         }
 
         // start camera thread
-	    camera = Camera.open();
+        camera = Camera.open();
 
         cameraLatch = new CountDownLatch(1);
         cameraThread = new CameraThread(this);
