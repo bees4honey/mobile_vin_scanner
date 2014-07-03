@@ -29,6 +29,7 @@
 		7A85EE17148F7AB7002B5517 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE16148F7AB7002B5517 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7A85EE1B148F7AFF002B5517 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */; };
 		7A85EE26148F8476002B5517 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE25148F8476002B5517 /* light.png */; };
+		B10591481965664C005A6F57 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B10591471965664C005A6F57 /* base64.m */; };
 		BBA420B0170129140036AC50 /* ScannerOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA420AF170129140036AC50 /* ScannerOverlayController.m */; };
 		BBA420B4170134380036AC50 /* demoBackgroundHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B2170134380036AC50 /* demoBackgroundHorizontal.png */; };
 		BBA420B5170134380036AC50 /* demoBackgroundVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B3170134380036AC50 /* demoBackgroundVertical.png */; };
@@ -65,6 +66,8 @@
 		7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		7A85EE25148F8476002B5517 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
+		B10591461965664C005A6F57 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		B10591471965664C005A6F57 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
 		BBA420AF170129140036AC50 /* ScannerOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerOverlayController.m; sourceTree = "<group>"; };
 		BBA420B11701299D0036AC50 /* ScannerOverlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScannerOverlayController.h; sourceTree = "<group>"; };
 		BBA420B2170134380036AC50 /* demoBackgroundHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demoBackgroundHorizontal.png; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 		7A85EDFA148F7864002B5517 /* VinScannerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				B10591461965664C005A6F57 /* base64.h */,
+				B10591471965664C005A6F57 /* base64.m */,
 				7A85EE20148F7E3E002B5517 /* Resources */,
 				7A85EE11148F795C002B5517 /* Library */,
 				7A85EE03148F7864002B5517 /* AppDelegate.h */,
@@ -257,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10591481965664C005A6F57 /* base64.m in Sources */,
 				7A85EE01148F7864002B5517 /* main.m in Sources */,
 				7A85EE05148F7864002B5517 /* AppDelegate.m in Sources */,
 				7A85EE08148F7864002B5517 /* ViewController.m in Sources */,
