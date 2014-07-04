@@ -403,6 +403,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
 
             List<Size> sizes = cameraParameters.getSupportedPreviewSizes();
             Size optimalSize = getOptimalPreviewSize(sizes, width, height);
+            Log.d(TAG, "Optimal preview size is chosen: width=" + optimalSize.width + " height=" + optimalSize.height);
             cameraParameters.setPreviewSize(optimalSize.width, optimalSize.height);
 
             // set YUV data format.
@@ -416,10 +417,12 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             }
 
             // turn off flash
-            if (torchControl != null)
-                torchControl.torch(false);
-            else
-                cameraParameters.set("flash-mode", android.hardware.Camera.Parameters.FLASH_MODE_OFF);
+            if (cameraParameters.getFlashMode() != null) {
+                if (torchControl != null)
+                    torchControl.torch(false);
+                else
+                    cameraParameters.set("flash-mode", android.hardware.Camera.Parameters.FLASH_MODE_OFF);
+            }
 
             // set focus mode
             cameraParameters.set("focus-mode", android.hardware.Camera.Parameters.FOCUS_MODE_AUTO);
@@ -554,16 +557,17 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             torchControl.torch(false);
         else {
             try {
-                Camera.Parameters CameraParameters = camera.getParameters();
-                if (CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0 ||
-                        CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_ON) == 0) {
+                Camera.Parameters cameraParameters = camera.getParameters();
+                if (cameraParameters.getFlashMode() != null &&
+                        (cameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0 ||
+                                cameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_ON) == 0)) {
                     Log.i(TAG, "Torch Off");
                     buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
-                    CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
+                    cameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
                     torchIsOn = false;
 
                     // refresh camera settings
-                    camera.setParameters(CameraParameters);
+                    camera.setParameters(cameraParameters);
                 }
             } catch (Exception e) {
                 Log.e(TAG, "torch On/Off Exception", e);
@@ -776,13 +780,11 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     //Class to control orientation changes of device
     private class ScannerOrientationListener extends OrientationEventListener {
         private static final int ROTATION_THRESHOLD = 30;
-        private int curOrientationInDegrees;
         private SupportedOrientations curOrientation;
 
         public ScannerOrientationListener(Context context) {
             super(context, SensorManager.SENSOR_DELAY_NORMAL);
             curOrientation = SupportedOrientations.LANDSCAPE;
-            curOrientationInDegrees = curOrientation.getAngle();
         }
 
         @Override
@@ -799,7 +801,6 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             }
 
             curOrientation = newOrientation;
-            curOrientationInDegrees = newOrientation.getAngle();
             rearrangeControls(curOrientation);
         }
 
