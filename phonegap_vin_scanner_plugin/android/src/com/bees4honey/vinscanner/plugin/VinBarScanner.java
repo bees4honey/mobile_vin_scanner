@@ -43,8 +43,9 @@ public class VinBarScanner extends CordovaPlugin {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
-                try {
-                    obj.put("text", intent.getStringExtra(Scanner.SCANNED_CODE));
+                try 
+                {
+                    obj.put("VINCode", intent.getStringExtra(Scanner.SCANNED_CODE));
                     obj.put("cancelled", false);
                 } catch (JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
@@ -54,7 +55,7 @@ public class VinBarScanner extends CordovaPlugin {
             if (resultCode == Activity.RESULT_CANCELED) {
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put("text", "NON RESULT");
+                    obj.put("VINCode", "NON RESULT");
                     obj.put("cancelled", "true");
                 } catch (JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
