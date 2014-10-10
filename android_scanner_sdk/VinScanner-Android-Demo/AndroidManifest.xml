@@ -5,12 +5,12 @@
 
     <uses-sdk
             android:minSdkVersion="8"
-            android:targetSdkVersion="15">
+            android:targetSdkVersion="19">
     </uses-sdk>
 
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="true"/>
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
 
     <application

@@ -2,17 +2,10 @@
 <resources>
     
     <string name="app_name">VIN Scanner</string>
-	<color name="viewfinder_dark_line">#333333</color>
 	<item type="id" name="decode" format="integer">2131099648</item>
 	<item name="decoded" type="id" format="integer">0x7f060003</item>
 	<item name="focused" type="id" format="integer">0x7f060001</item>
-	
-	<color name="scanning_shadow">#808080</color>
-	<color name="scanning">#909090</color>
-	<string name="scanning"></string>
-	<color name="viewfinder_mask">#CC444444</color>
-	<color name="viewfinder_laser">#FF0000</color>
-	<color name="viewfinder_light_line">#AAAAAA</color>
+
 	<item type="id" format="integer" name="quit">0x7f060003</item>
 
 <item type="id" name="TorchOnOff" format="integer">0x7f060009</item>

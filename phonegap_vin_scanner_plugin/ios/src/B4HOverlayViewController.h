@@ -1,9 +1,9 @@
 //
 //  B4HOverlayViewController.h
-//	ScannerLibrary
+//  VinScannerDemo
 //
-//	Created by bees4honey developer.
-//	Copyright (c) 2014 bees4honey. All rights reserved.
+//	Created by bee4honey developer.
+//	Copyright (c) 2012 bees4honey. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -15,12 +15,23 @@
 - (void)barcodeScanCancelled;
 @end
 
-@interface B4HOverlayViewController : B4HCameraOverlayViewController<B4HScannerDelegate>
-@property (nonatomic, strong) IBOutlet UIImageView *background;
-@property (nonatomic, strong) id<B4HOverlayDelegate> delegate;
-@property (nonatomic, strong) IBOutlet UIButton *ledButton;
+@interface B4HOverlayViewController : B4HCameraOverlayViewController <B4HScannerDelegate> {
+	IBOutlet UIButton *ledButton;
+	IBOutlet UIButton *startButton;
+	IBOutlet UIImageView *background;
+	NSString *code;
+	IBOutlet UILabel *codeLabel;
+	IBOutlet UILabel *pauseLabel;
+}
 
-- (IBAction)cancelButtonPressed:(id)sender;
-- (IBAction)orientationButtonPressed:(id)sender;
-- (IBAction)ledButtonPressed:(id)sender;
+@property (strong, nonatomic) id<B4HOverlayDelegate> delegate;
+
+//	Turn on/off torchlight if avaliable
+- (IBAction)ledButtonClick;
+//	Stop/start scanning process and camera capture
+- (IBAction)toggleScan;
+//	Go to previous screen
+- (IBAction)cancelScan;
+//
+- (IBAction)changeScanOrientation;
 @end

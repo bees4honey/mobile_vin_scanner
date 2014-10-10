@@ -1,0 +1,65 @@
+//
+//  ViewController.m
+//  VinScannerDemo
+//
+//	Created by bee4honey developer.
+//	Copyright (c) 2014 bees4honey. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "B4HScannerController.h"
+#import "ScannerOverlayController.h"
+
+@implementation ViewController
+
+@synthesize pickerController;
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+	// Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+	[super viewDidLoad];
+}
+
+- (void)dealloc{
+	self.pickerController = nil;
+	[super dealloc];
+}
+
+-(BOOL) shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger) supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;//UIInterfaceOrientationMaskAllButUpsideDown;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) interfaceOrientation {
+	return YES;
+}
+
+#pragma mark Event Methods
+- (void)scanButtonClicked {
+	// create custom ScannerOverlayController to use different interface orientation
+	self.pickerController = [[[ScannerOverlayController alloc] init] autorelease];
+	OverlayController *overlayController = [[OverlayController alloc] initWithNibName: @"OverlayController" bundle: nil];
+	// set overlay and delegate view controllers
+	[self.pickerController setOverlay: overlayController];
+	[self.pickerController setDelegate: self];
+	// present B4HScannerController modally
+    [self presentViewController:self.pickerController animated:YES completion:nil];
+	[overlayController release];
+}
+
+- (void)scanner: (B4HScannerController *) scanner gotCode: (NSString *) code {
+	vincode.text = code;
+    [scanner dismissViewControllerAnimated:YES completion:nil];
+}
+
+@end

@@ -14,17 +14,54 @@ import android.util.Log;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
-import com.bees4honey.vinscanner.example.R;
+import android.content.Intent;
 
 import java.io.FileDescriptor;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * Wrapper Activity for native VIN scanner library. Activity can function in two modes: single scan and continuous scan.
+ * In single mode the first scanned VIN-code is returned in intent to calling activity with {@link #SCANNED_CODE} key.
+ * In continuous mode the scanned code is shown to user and then scanner continues the scanning process.
+ * Code to start Scanner activity in single mode:
+ *
+ * <pre>
+ * {@code
+ * Intent intent = new Intent(curContext, com.bees4honey.vinscanner.Scanner.class);
+ * intent.putExtra(com.bees4honey.vinscanner.Scanner.SINGLE_SCAN, true);
+ * startActivityForResult(intent, SCAN_CODE);
+ * }
+ * </pre>
+ *
+ * Code to get the VIN code scanned in the single mode:
+ *
+ * <pre>
+ * {@code
+ * protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+ *     if (requestCode == SCAN_CODE && resultCode == RESULT_OK) {
+ *         String scannedVIN = data.getStringExtra(com.bees4honey.vinscanner.Scanner.SINGLE_SCAN);
+ *         Log.d("VinScanner", "Scanned vin: " + scannedVIN);
+ *     }
+ * }
+ * }
+ * </pre>
+ */
 public class Scanner extends Activity implements SurfaceHolder.Callback {
     /**
-     * **********************************************************************
+     * Key for boolean extra which should be passed to the activity. If true then first scanned VIN code would be passed
+     * back to the calling activity with intent containing {@link #SCANNED_CODE} activity. If no value passed with SINGLE_SCAN value
+     * then scanner is functioning in continuous mode.
      */
+    public static final String SINGLE_SCAN = "single_scan";
+
+    /**
+     * A key for scanned code returned from activity if it was started in single scan mode.
+     */
+    public static final String SCANNED_CODE = "scanned_code";
+
     private static final String TAG = "VinScanner";
     private static final int AUTOFOCUS_DELAY = 500;
     private static final int AUTOFOCUS_TIMEOUT = 1500;
@@ -48,7 +85,6 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     private MediaPlayer mediaPlayer;
     private Camera.Size previewSize;
     private boolean previewing;
-    private double quality;
     private boolean scanning;
     private boolean settings[] = {true, true};
     private boolean surfaceChangedDelayed;
@@ -56,8 +92,10 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     private final Runnable watchdog;
     private ImageButton buttonTorchOnOff;
     private RotatableTextView vincodeView;
+    private ImageView aim2DView;
     private SupportedOrientations curOrientation;    //current orientation of device.
     private OrientationEventListener orientationListener;
+    private boolean singleScan; //a flag which shows if scanned code should be returned immediately.
 
     //scanning can be performed both in horizontal and vertical directions. Flag shows the direction of scanning
     private boolean scanHorizontally;
@@ -109,11 +147,13 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                         if (CameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0) {
                             Log.i(TAG, "Torch Off");
                             torchIsOn = false;
-                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                            int resourceId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
                             CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
                         } else {
                             Log.i(TAG, "Torch On");
-                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+                            int resourceId = getApplication().getResources().getIdentifier("light_on", "drawable", getApplication().getPackageName());
+                            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
                             torchIsOn = true;
                             CameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_TORCH);
                         }
@@ -203,8 +243,11 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        singleScan = getIntent().getBooleanExtra(SINGLE_SCAN, false);
+
         // bind displaying context
-        setContentView(R.layout.scan);
+        int scanId = getApplication().getResources().getIdentifier("scan", "layout", getApplication().getPackageName());
+        setContentView(scanId);
 
         //Activity is only enabled for landscape layout.
         //Default landscape angle diff from default portrait orientation is 270 degrees
@@ -213,8 +256,12 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         orientationListener = new ScannerOrientationListener(this);
 
         // init local variables for fast access to displayed elements
-        finderView = (ViewFinder) findViewById(R.id.viewfinder_view);
-        vincodeView = (RotatableTextView) findViewById(R.id.tv_vincode);
+        int resourceId = getApplication().getResources().getIdentifier("viewfinder_view", "id", getApplication().getPackageName());
+        finderView = (ViewFinder) findViewById(resourceId);
+        resourceId = getApplication().getResources().getIdentifier("tv_vincode", "id", getApplication().getPackageName());
+        vincodeView = (RotatableTextView) findViewById(resourceId);
+        resourceId = getApplication().getResources().getIdentifier("image_2d_aim", "id", getApplication().getPackageName());
+        aim2DView = (ImageView) findViewById(resourceId);
 
         try {
             torchControl = new TorchControl();
@@ -222,7 +269,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             torchControl = null;
         }
 
-        buttonTorchOnOff = (ImageButton) this.findViewById(R.id.TorchButton);
+        resourceId = getApplication().getResources().getIdentifier("TorchButton", "id", getApplication().getPackageName());
+        buttonTorchOnOff = (ImageButton) this.findViewById(resourceId);
         buttonTorchOnOff.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,7 +280,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         });
 
         scanHorizontally = true;
-        buttonScanDirection = (ImageButton) findViewById(R.id.orientationButton);
+        resourceId = getApplication().getResources().getIdentifier("orientationButton", "id", getApplication().getPackageName());
+        buttonScanDirection = (ImageButton) findViewById(resourceId);
         buttonScanDirection.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -268,8 +317,6 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
 
     // decode obtained image
     private void decode(byte[] data) {
-        int w, h;
-
         if (previewing) {
             if (isScanning()) {    // when program is in preview and scanning, then CallBack is set to receive one frame
                 camera.setOneShotPreviewCallback(cameraPreviewCallback);
@@ -281,27 +328,33 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 // there is data on input and program is in scanning mode
 
                 setScanning(false);                // temporary turn off scanning
-                h = previewSize.height / 3;        // calculate height of image for processing
-                w = previewSize.width;            // get image width for processing
 
                 byte[] newData = data;
                 //scanning direction has been changed so we should rotate the image we received from camera
+                int scanW = previewSize.width;
+                int scanH = previewSize.height;
                 if (!scanHorizontally) {
+                    //rotate image on 90 degrees
+                    scanW = previewSize.height;
+                    scanH = previewSize.width;
                     newData = rotateCameraImage(data, previewSize.width, previewSize.height);
                 }
 
                 // call native procedure to detect VIN
-                String decodedVIN = b4HScanner.parse(newData, h * w, w, h, h >> 6, this);
-
-                quality = (quality * 3.0 + (double) b4HScanner.acuracy) / 4.0;
+                String decodedVIN = b4HScanner.parse(newData, scanW, scanH, this);
 
                 if (decodedVIN != null) {
                     // decodedVIN contains line with read code
 
                     beepAndVibrate();    // play sound and vibrate
 
-                    // show decoded vin and continue scanning
-                    showVinCode(decodedVIN);
+                    if (singleScan) {
+                        //Finish scanning and return scanned code.
+                        finishScan((String) decodedVIN.subSequence(0, decodedVIN.length()));
+                    } else {
+                        // show decoded vin and continue scanning
+                        showVinCode(decodedVIN);
+                    }
 
                     // send message to another thread that code is obtained
                     Message msg = handler.obtainMessage(DECODED, decodedVIN);
@@ -311,6 +364,14 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 }
             }
         }
+    }
+
+    // Finish scan and return result to the calling activity.
+    public void finishScan(String codeResult) {
+        Intent intent = getIntent();
+        intent.putExtra(Scanner.SCANNED_CODE, codeResult);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 
     private void showVinCode(String vincode) {
@@ -338,7 +399,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             Resources res = getResources();
 
             try {
-                AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(R.raw.scanned);
+                int resourceId = getApplication().getResources().getIdentifier("scanned", "raw", getApplication().getPackageName());
+                AssetFileDescriptor assetFileDescriptor = res.openRawResourceFd(resourceId);
                 // get file descriptor
                 FileDescriptor fileDescriptor = assetFileDescriptor.getFileDescriptor();
 
@@ -410,7 +472,7 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             cameraParameters.setPreviewFormat(ImageFormat.NV21);
 
             // set frequency of capture
-            cameraParameters.setPreviewFrameRate(15);
+            configureFrameRate(cameraParameters);
 
             if (cameraParameters.get(str) != null) {
                 cameraParameters.set(str, 2);
@@ -444,6 +506,25 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
             previewing = true;
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private void configureFrameRate(Camera.Parameters params) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            List<int[]> ranges = params.getSupportedPreviewFpsRange();
+            int []selectedRange = {0, 0};
+            if (ranges != null) {
+                for (int[] range : ranges) {
+                    if (range[0] > selectedRange[0]) {
+                        selectedRange[0] = range[0];
+                        selectedRange[1] = range[1];
+                    }
+                }
+                params.setPreviewFpsRange(selectedRange[0], selectedRange[1]);
+            }
+        } else {
+            params.setPreviewFrameRate(15);
         }
     }
 
@@ -562,7 +643,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                         (cameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_TORCH) == 0 ||
                                 cameraParameters.getFlashMode().compareTo(android.hardware.Camera.Parameters.FLASH_MODE_ON) == 0)) {
                     Log.i(TAG, "Torch Off");
-                    buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+                    int resourceId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+                    buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
                     cameraParameters.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
                     torchIsOn = false;
 
@@ -588,7 +670,6 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     }
 
     // handler called at start/restore of the app
-    // E.g. when closing browser window or start
     @Override
     protected void onResume() {
         super.onResume();    // call method of parent class
@@ -616,13 +697,15 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         setScanning(true);            // app goes to scanning mode immediately
         watchdog.run();                // start task on schedule
 
-        buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+        int resourceId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+        buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
         torchIsOn = false;
 
         if (holder == null) {
             // if app is just launched
             // get holder to display PREVIEW
-            SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+            resourceId = getApplication().getResources().getIdentifier("camera_view", "id", getApplication().getPackageName());
+            SurfaceView view = (SurfaceView) findViewById(resourceId);
             SurfaceHolder surfaceHolder = view.getHolder();
 
             // set type of displaying image
@@ -637,7 +720,8 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
                 surfaceChangedDelayed = false;    // reset flag of delayed event
 
                 // restore holder work
-                SurfaceView view = (SurfaceView) findViewById(R.id.camera_view);
+                resourceId = getApplication().getResources().getIdentifier("camera_view", "id", getApplication().getPackageName());
+                SurfaceView view = (SurfaceView) findViewById(resourceId);
                 surfaceChanged(holder, PixelFormat.OPAQUE, view.getWidth(), view.getHeight());
             }
         }
@@ -692,33 +776,47 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
         }
 
         curOrientation = newOrientation;
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.rotate);
+        int resourceId = getApplication().getResources().getIdentifier("rotate", "drawable", getApplication().getPackageName());
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), resourceId);
         bm = rotateBitmapForCurrentOrientation(bm);
         buttonScanDirection.setImageBitmap(bm);
 
         updateVinViewOrientation();
 
         if (torchIsOn) {
-            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light_on));
+            resourceId = getApplication().getResources().getIdentifier("light_on", "drawable", getApplication().getPackageName());
+            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
         } else {
-            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(R.drawable.light));
+            resourceId = getApplication().getResources().getIdentifier("light", "drawable", getApplication().getPackageName());
+            buttonTorchOnOff.setImageBitmap(getRotatedBitmapForDrawable(resourceId));
         }
     }
 
     private void updateVinViewOrientation() {
+        int resourceId;
         switch (curOrientation) {
             case PORTRAIT:
+                resourceId = getApplication().getResources().getIdentifier("aim_2d_rotated270", "drawable", getApplication().getPackageName());
                 vincodeView.setTextOrientation(RotatableTextView.TextOrientations.DOWN_TOP);
+                aim2DView.setBackgroundResource(resourceId);
                 break;
             case UPSIDE_DOWN:
+                resourceId = getApplication().getResources().getIdentifier("aim_2d_rotated90", "drawable", getApplication().getPackageName());
                 vincodeView.setTextOrientation(RotatableTextView.TextOrientations.TOP_DOWN);
+                aim2DView.setBackgroundResource(resourceId);
                 break;
             case LANDSCAPE:
+                resourceId = getApplication().getResources().getIdentifier("aim_2d", "drawable", getApplication().getPackageName());
                 vincodeView.setTextOrientation(RotatableTextView.TextOrientations.NORMAL);
+                aim2DView.setBackgroundResource(resourceId);
                 break;
             case LANDSCAPE_REVERSE:
+                resourceId = getApplication().getResources().getIdentifier("aim_2d_rotated180", "drawable", getApplication().getPackageName());
                 vincodeView.setTextOrientation(RotatableTextView.TextOrientations.REVERSE);
+                aim2DView.setBackgroundResource(resourceId);
                 break;
+            default:
+                //do nothing
         }
     }
 
@@ -753,29 +851,6 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     /**
      * **********************************************************************
      */
-
-    private enum SupportedOrientations {
-        PORTRAIT(0, false),
-        UPSIDE_DOWN(180, false),
-        LANDSCAPE(270, true),
-        LANDSCAPE_REVERSE(90, true);
-
-        private final int angle;
-        private final boolean isLandscape;
-
-        private SupportedOrientations(int angle, boolean isLandscape) {
-            this.angle = angle;
-            this.isLandscape = isLandscape;
-        }
-
-        public int getAngle() {
-            return angle;
-        }
-
-        public boolean isLandscape() {
-            return isLandscape;
-        }
-    }
 
     //Class to control orientation changes of device
     private class ScannerOrientationListener extends OrientationEventListener {

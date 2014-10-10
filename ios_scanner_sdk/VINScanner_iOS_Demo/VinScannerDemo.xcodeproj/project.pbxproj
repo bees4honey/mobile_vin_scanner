@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D03EC2814DA9D82005F6399 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 2D03EC2414DA9D81005F6399 /* iTunesArtwork */; };
+		2D03EC2914DA9D82005F6399 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D03EC2514DA9D81005F6399 /* Default.png */; };
+		2D03EC2A14DA9D82005F6399 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D03EC2614DA9D81005F6399 /* Default@2x.png */; };
+		2D03EC2B14DA9D82005F6399 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2D03EC2714DA9D81005F6399 /* Icon@2x.png */; };
+		550DC66214C4250E00D2B80B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550DC66114C4250E00D2B80B /* MobileCoreServices.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		550DC66814C43FF500D2B80B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550DC66714C43FF500D2B80B /* Security.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		551C7A7414BD52DB003AAB3E /* OverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551C7A7214BD52DB003AAB3E /* OverlayController.m */; };
+		551C7A7514BD52DB003AAB3E /* OverlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551C7A7314BD52DB003AAB3E /* OverlayController.xib */; };
+		55420CB514BAF696000ACAE6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */; };
+		55BAB33614CD423100985416 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BAB33514CD423100985416 /* QuartzCore.framework */; };
+		55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C71AB314DAA65400B56F2F /* libB4HVINScanner.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		7A066DB31490D4AE007C5A49 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A066DB11490D4AE007C5A49 /* Icon.png */; };
+		7A85EDF5148F7864002B5517 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EDF4148F7864002B5517 /* UIKit.framework */; };
+		7A85EDF7148F7864002B5517 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EDF6148F7864002B5517 /* Foundation.framework */; };
+		7A85EDFF148F7864002B5517 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EDFD148F7864002B5517 /* InfoPlist.strings */; };
+		7A85EE01148F7864002B5517 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85EE00148F7864002B5517 /* main.m */; };
+		7A85EE05148F7864002B5517 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85EE04148F7864002B5517 /* AppDelegate.m */; };
+		7A85EE08148F7864002B5517 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A85EE07148F7864002B5517 /* ViewController.m */; };
+		7A85EE0B148F7864002B5517 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE09148F7864002B5517 /* ViewController.xib */; };
+		7A85EE17148F7AB7002B5517 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE16148F7AB7002B5517 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7A85EE1B148F7AFF002B5517 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */; };
+		7A85EE26148F8476002B5517 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A85EE25148F8476002B5517 /* light.png */; };
+		B10591481965664C005A6F57 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B10591471965664C005A6F57 /* base64.m */; };
+		B16BFA88198A78A3009CF8FC /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B16BFA87198A78A3009CF8FC /* libstdc++.6.0.9.dylib */; };
+		B190F8D9198A25B5002D2171 /* aim_2d.png in Resources */ = {isa = PBXBuildFile; fileRef = B190F8D8198A25B5002D2171 /* aim_2d.png */; };
+		B1C4D3CD198A0C690033AEC1 /* backgroundLandscapeHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C4D3C9198A0C690033AEC1 /* backgroundLandscapeHorizontal.png */; };
+		B1C4D3CE198A0C690033AEC1 /* backgroundLandscapeVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C4D3CA198A0C690033AEC1 /* backgroundLandscapeVertical.png */; };
+		B1C4D3CF198A0C690033AEC1 /* backgroundPortraitHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C4D3CB198A0C690033AEC1 /* backgroundPortraitHorizontal.png */; };
+		B1C4D3D0198A0C690033AEC1 /* backgroundPortraitVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = B1C4D3CC198A0C690033AEC1 /* backgroundPortraitVertical.png */; };
+		BBA420B0170129140036AC50 /* ScannerOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA420AF170129140036AC50 /* ScannerOverlayController.m */; };
+		BBA420B717013A7C0036AC50 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBA420B617013A7C0036AC50 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2D03EC2414DA9D81005F6399 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		2D03EC2514DA9D81005F6399 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2D03EC2614DA9D81005F6399 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		2D03EC2714DA9D81005F6399 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		550DC66114C4250E00D2B80B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		550DC66714C43FF500D2B80B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		551C7A7114BD52DB003AAB3E /* OverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayController.h; sourceTree = "<group>"; };
+		551C7A7214BD52DB003AAB3E /* OverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayController.m; sourceTree = "<group>"; };
+		551C7A7314BD52DB003AAB3E /* OverlayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayController.xib; sourceTree = "<group>"; };
+		551C7A7714BD5633003AAB3E /* B4HScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B4HScannerController.h; sourceTree = "<group>"; };
+		55BAB33514CD423100985416 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		55C71AB314DAA65400B56F2F /* libB4HVINScanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libB4HVINScanner.a; sourceTree = "<group>"; };
+		7A066DB11490D4AE007C5A49 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		7A85EDF0148F7864002B5517 /* VinScannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinScannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A85EDF4148F7864002B5517 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7A85EDF6148F7864002B5517 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7A85EDFC148F7864002B5517 /* VinScannerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VinScannerDemo-Info.plist"; sourceTree = "<group>"; };
+		7A85EDFE148F7864002B5517 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7A85EE00148F7864002B5517 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A85EE02148F7864002B5517 /* VinScannerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VinScannerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		7A85EE03148F7864002B5517 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A85EE04148F7864002B5517 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A85EE06148F7864002B5517 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7A85EE07148F7864002B5517 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7A85EE0A148F7864002B5517 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		7A85EE16148F7AB7002B5517 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		7A85EE25148F8476002B5517 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
+		B10591461965664C005A6F57 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		B10591471965664C005A6F57 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		B16BFA87198A78A3009CF8FC /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		B175A4521982A5C700DD4102 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		B175A4541982A5CE00DD4102 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		B190F8D8198A25B5002D2171 /* aim_2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim_2d.png; sourceTree = "<group>"; };
+		B1C4D3C9198A0C690033AEC1 /* backgroundLandscapeHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundLandscapeHorizontal.png; sourceTree = "<group>"; };
+		B1C4D3CA198A0C690033AEC1 /* backgroundLandscapeVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundLandscapeVertical.png; sourceTree = "<group>"; };
+		B1C4D3CB198A0C690033AEC1 /* backgroundPortraitHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPortraitHorizontal.png; sourceTree = "<group>"; };
+		B1C4D3CC198A0C690033AEC1 /* backgroundPortraitVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPortraitVertical.png; sourceTree = "<group>"; };
+		BBA420AF170129140036AC50 /* ScannerOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerOverlayController.m; sourceTree = "<group>"; };
+		BBA420B11701299D0036AC50 /* ScannerOverlayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScannerOverlayController.h; sourceTree = "<group>"; };
+		BBA420B617013A7C0036AC50 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A85EDED148F7864002B5517 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B16BFA88198A78A3009CF8FC /* libstdc++.6.0.9.dylib in Frameworks */,
+				55C71AB414DAA65400B56F2F /* libB4HVINScanner.a in Frameworks */,
+				55BAB33614CD423100985416 /* QuartzCore.framework in Frameworks */,
+				550DC66814C43FF500D2B80B /* Security.framework in Frameworks */,
+				550DC66214C4250E00D2B80B /* MobileCoreServices.framework in Frameworks */,
+				55420CB514BAF696000ACAE6 /* CoreMedia.framework in Frameworks */,
+				7A85EE1B148F7AFF002B5517 /* CoreVideo.framework in Frameworks */,
+				7A85EE17148F7AB7002B5517 /* AVFoundation.framework in Frameworks */,
+				7A85EDF5148F7864002B5517 /* UIKit.framework in Frameworks */,
+				7A85EDF7148F7864002B5517 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A85EDE5148F7864002B5517 = {
+			isa = PBXGroup;
+			children = (
+				2D03EC2414DA9D81005F6399 /* iTunesArtwork */,
+				2D03EC2514DA9D81005F6399 /* Default.png */,
+				2D03EC2614DA9D81005F6399 /* Default@2x.png */,
+				BBA420B617013A7C0036AC50 /* Default-568h@2x.png */,
+				2D03EC2714DA9D81005F6399 /* Icon@2x.png */,
+				7A066DB11490D4AE007C5A49 /* Icon.png */,
+				7A85EDFA148F7864002B5517 /* VinScannerDemo */,
+				7A85EDF3148F7864002B5517 /* Frameworks */,
+				7A85EDF1148F7864002B5517 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A85EDF1148F7864002B5517 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A85EDF0148F7864002B5517 /* VinScannerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A85EDF3148F7864002B5517 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B16BFA87198A78A3009CF8FC /* libstdc++.6.0.9.dylib */,
+				B175A4541982A5CE00DD4102 /* libstdc++.dylib */,
+				B175A4521982A5C700DD4102 /* libiconv.dylib */,
+				55BAB33514CD423100985416 /* QuartzCore.framework */,
+				550DC66114C4250E00D2B80B /* MobileCoreServices.framework */,
+				550DC66714C43FF500D2B80B /* Security.framework */,
+				7A85EE1C148F7B0B002B5517 /* CoreMedia.framework */,
+				7A85EE1A148F7AFF002B5517 /* CoreVideo.framework */,
+				7A85EE16148F7AB7002B5517 /* AVFoundation.framework */,
+				7A85EDF4148F7864002B5517 /* UIKit.framework */,
+				7A85EDF6148F7864002B5517 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A85EDFA148F7864002B5517 /* VinScannerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B10591461965664C005A6F57 /* base64.h */,
+				B10591471965664C005A6F57 /* base64.m */,
+				7A85EE20148F7E3E002B5517 /* Resources */,
+				7A85EE11148F795C002B5517 /* Library */,
+				7A85EE03148F7864002B5517 /* AppDelegate.h */,
+				7A85EE04148F7864002B5517 /* AppDelegate.m */,
+				7A85EE06148F7864002B5517 /* ViewController.h */,
+				7A85EE07148F7864002B5517 /* ViewController.m */,
+				7A85EE09148F7864002B5517 /* ViewController.xib */,
+				BBA420B11701299D0036AC50 /* ScannerOverlayController.h */,
+				BBA420AF170129140036AC50 /* ScannerOverlayController.m */,
+				551C7A7114BD52DB003AAB3E /* OverlayController.h */,
+				551C7A7214BD52DB003AAB3E /* OverlayController.m */,
+				551C7A7314BD52DB003AAB3E /* OverlayController.xib */,
+				7A85EDFB148F7864002B5517 /* Supporting Files */,
+			);
+			path = VinScannerDemo;
+			sourceTree = "<group>";
+		};
+		7A85EDFB148F7864002B5517 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A85EDFC148F7864002B5517 /* VinScannerDemo-Info.plist */,
+				7A85EDFD148F7864002B5517 /* InfoPlist.strings */,
+				7A85EE00148F7864002B5517 /* main.m */,
+				7A85EE02148F7864002B5517 /* VinScannerDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A85EE11148F795C002B5517 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				551C7A7714BD5633003AAB3E /* B4HScannerController.h */,
+				55C71AB314DAA65400B56F2F /* libB4HVINScanner.a */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		7A85EE20148F7E3E002B5517 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B190F8D8198A25B5002D2171 /* aim_2d.png */,
+				B1C4D3C9198A0C690033AEC1 /* backgroundLandscapeHorizontal.png */,
+				B1C4D3CA198A0C690033AEC1 /* backgroundLandscapeVertical.png */,
+				B1C4D3CB198A0C690033AEC1 /* backgroundPortraitHorizontal.png */,
+				B1C4D3CC198A0C690033AEC1 /* backgroundPortraitVertical.png */,
+				7A85EE25148F8476002B5517 /* light.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A85EDEF148F7864002B5517 /* VinScannerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A85EE0E148F7864002B5517 /* Build configuration list for PBXNativeTarget "VinScannerDemo" */;
+			buildPhases = (
+				7A85EDEC148F7864002B5517 /* Sources */,
+				7A85EDED148F7864002B5517 /* Frameworks */,
+				7A85EDEE148F7864002B5517 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinScannerDemo;
+			productName = VinScannerDemo;
+			productReference = 7A85EDF0148F7864002B5517 /* VinScannerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A85EDE7148F7864002B5517 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				TargetAttributes = {
+					7A85EDEF148F7864002B5517 = {
+						DevelopmentTeam = ANJ832G8SK;
+					};
+				};
+			};
+			buildConfigurationList = 7A85EDEA148F7864002B5517 /* Build configuration list for PBXProject "VinScannerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7A85EDE5148F7864002B5517;
+			productRefGroup = 7A85EDF1148F7864002B5517 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A85EDEF148F7864002B5517 /* VinScannerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A85EDEE148F7864002B5517 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C4D3D0198A0C690033AEC1 /* backgroundPortraitVertical.png in Resources */,
+				7A85EDFF148F7864002B5517 /* InfoPlist.strings in Resources */,
+				7A85EE0B148F7864002B5517 /* ViewController.xib in Resources */,
+				7A85EE26148F8476002B5517 /* light.png in Resources */,
+				7A066DB31490D4AE007C5A49 /* Icon.png in Resources */,
+				B190F8D9198A25B5002D2171 /* aim_2d.png in Resources */,
+				551C7A7514BD52DB003AAB3E /* OverlayController.xib in Resources */,
+				2D03EC2814DA9D82005F6399 /* iTunesArtwork in Resources */,
+				2D03EC2914DA9D82005F6399 /* Default.png in Resources */,
+				B1C4D3CE198A0C690033AEC1 /* backgroundLandscapeVertical.png in Resources */,
+				B1C4D3CF198A0C690033AEC1 /* backgroundPortraitHorizontal.png in Resources */,
+				2D03EC2A14DA9D82005F6399 /* Default@2x.png in Resources */,
+				2D03EC2B14DA9D82005F6399 /* Icon@2x.png in Resources */,
+				B1C4D3CD198A0C690033AEC1 /* backgroundLandscapeHorizontal.png in Resources */,
+				BBA420B717013A7C0036AC50 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A85EDEC148F7864002B5517 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10591481965664C005A6F57 /* base64.m in Sources */,
+				7A85EE01148F7864002B5517 /* main.m in Sources */,
+				7A85EE05148F7864002B5517 /* AppDelegate.m in Sources */,
+				7A85EE08148F7864002B5517 /* ViewController.m in Sources */,
+				551C7A7414BD52DB003AAB3E /* OverlayController.m in Sources */,
+				BBA420B0170129140036AC50 /* ScannerOverlayController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7A85EDFD148F7864002B5517 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A85EDFE148F7864002B5517 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7A85EE09148F7864002B5517 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A85EE0A148F7864002B5517 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A066DAA1490CC6E007C5A49 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
+				GCC_THUMB_SUPPORT = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = AdHoc;
+		};
+		7A066DAB1490CC6E007C5A49 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VinScannerDemo\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos7.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = AdHoc;
+		};
+		7A85EE0C148F7864002B5517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_THUMB_SUPPORT = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A85EE0D148F7864002B5517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mikhail Katomine (6P4S46BY57)";
+				GCC_THUMB_SUPPORT = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/VinScannerDemo\"";
+				PROVISIONING_PROFILE = "BAA27E17-06EA-4F60-BB16-C92AD2AF7A18";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A85EE0F148F7864002B5517 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VinScannerDemo\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos7.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7A85EE10148F7864002B5517 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = "VinScannerDemo/VinScannerDemo-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				INFOPLIST_FILE = "VinScannerDemo/VinScannerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VinScannerDemo\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos7.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A85EDEA148F7864002B5517 /* Build configuration list for PBXProject "VinScannerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A85EE0C148F7864002B5517 /* Debug */,
+				7A85EE0D148F7864002B5517 /* Release */,
+				7A066DAA1490CC6E007C5A49 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A85EE0E148F7864002B5517 /* Build configuration list for PBXNativeTarget "VinScannerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A85EE0F148F7864002B5517 /* Debug */,
+				7A85EE10148F7864002B5517 /* Release */,
+				7A066DAB1490CC6E007C5A49 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A85EDE7148F7864002B5517 /* Project object */;
+}

@@ -21,8 +21,8 @@ There are two ways to try our VIN scanning technology.
 2. Android https://play.google.com/store/apps/details?id=com.bees4honey.vinscanner
 
 ### Download appropriate project to try it in your app:
-1. ios_scanner_sdk - native iOS project, which you can build and try.
-2. android_scanner_sdk - native Android project.
+1. ios_scanner - native iOS project, which you can build and try. 
+2. android_scanner - native Android project.
 3. phonegap_vin_scanner_plugin - PhoneGap plugin for iOS and Android platforms.
 
 ## Licensing

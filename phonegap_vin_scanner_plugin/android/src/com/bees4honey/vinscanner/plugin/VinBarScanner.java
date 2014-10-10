@@ -35,6 +35,7 @@ public class VinBarScanner extends CordovaPlugin {
     public void scan() {
         Intent intentScan = new Intent("com.bees4honey.vinscanner.plugin.SCAN");
         intentScan.addCategory(Intent.CATEGORY_DEFAULT);
+        intentScan.putExtra(Scanner.SINGLE_SCAN, true);
 
         this.cordova.startActivityForResult((CordovaPlugin) this, intentScan, REQUEST_CODE);
     }
@@ -43,8 +44,7 @@ public class VinBarScanner extends CordovaPlugin {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
-                try 
-                {
+                try {
                     obj.put("VINCode", intent.getStringExtra(Scanner.SCANNED_CODE));
                     obj.put("cancelled", false);
                 } catch (JSONException e) {

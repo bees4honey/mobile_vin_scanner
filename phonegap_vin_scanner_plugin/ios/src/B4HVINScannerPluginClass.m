@@ -101,7 +101,7 @@
 {
     self.scannerViewController = [[B4HOverlayViewController alloc] initWithNibName:@"B4HOverlayViewController" bundle:nil];
     self.scannerViewController.delegate = self;
-    B4HScannerController *controller = [[B4HScannerController alloc] initWithOrientation:B4HOrientationHorizontal];
+    B4HScannerController *controller = [[B4HScannerController alloc] initWithOrientation:B4HScannerHorizontal];
     
     NSString* errorMessage = [self checkLibraryStatus:controller];
     if (errorMessage)
