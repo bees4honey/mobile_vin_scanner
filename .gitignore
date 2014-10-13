@@ -2,3 +2,4 @@
 *.iml
 gen
 out
+android_scanner_sdk/VinScanner-Android-Demo/.idea/
