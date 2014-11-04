@@ -41,14 +41,15 @@ Thanks!
 
 ## Phonegap plugin installation
 
-Phonegap VIN scanner plugin for iOS and Android platforms.
+We also support Phonegap VIN Scanner plugin for iOS and Android platforms.
+
+WARNING: since VIN Scanner plugin heavily uses native code for both iOS and Android platforms, the Adobe Phonegap Build cloud service is not supported. To use our plugin you need to build project using Phonegap command line tools.
 
 Installation instructions:
-1. Generate your project using "phonegap create" command
-2. Add a plugin to your project using the following command:
 
+1. Generate your project using "phonegap create" command.
+2. Add a plugin to your project using the following command:
 ```
 phonegap plugin add https://github.com/bees4honey/mobile_vin_scanner#:/phonegap_vin_scanner_plugin
 ```
-
-3. You can find usage example in phonegap_vin_scanner_plugin/index.html file.
+3. You can find usage example in plugins/com.bees4honey.vinscanner/index.html file in Phonegap project's folder.
