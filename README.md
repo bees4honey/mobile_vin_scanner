@@ -52,4 +52,5 @@ Installation instructions:
 ```
 phonegap plugin add https://github.com/bees4honey/mobile_vin_scanner#:/phonegap_vin_scanner_plugin
 ```
-3. You can find usage example in plugins/com.bees4honey.vinscanner/index.html file in Phonegap project's folder.
+
+You can find usage example in plugins/com.bees4honey.vinscanner/index.html file in Phonegap project's folder.
