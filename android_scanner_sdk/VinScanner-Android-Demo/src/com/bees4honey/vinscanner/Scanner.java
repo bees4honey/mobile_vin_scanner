@@ -902,12 +902,12 @@ public class Scanner extends Activity implements SurfaceHolder.Callback {
     // class of camera work thread
     class CameraThread extends Thread {
         android.os.Handler innerHandler;
-        Scanner _this;
+        Scanner parentScanner;
 
         // constructor
         CameraThread(Scanner scanner) {
             super();
-            _this = scanner;
+            parentScanner = scanner;
         }
 
         // method for finishing thread
