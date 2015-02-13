@@ -14,7 +14,7 @@
 		<string>https://github.com/bees4honey/mobile_vin_scanner.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ios_scanner_sdk/VINScanner—iOS—Demo/VinScannerDemo.xcodeproj/project.xcworkspace</string>
+	<string>ios_scanner_sdk/VINScanner_iOS_Demo/VinScannerDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C41AC9AAD3EE92E94EDAB412A568A13B60C4E5D1</key>
