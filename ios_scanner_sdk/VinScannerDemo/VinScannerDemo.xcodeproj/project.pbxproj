@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B15459151A91C706004F3FF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459141A91C706004F3FF1 /* main.m */; };
+		B15459181A91C706004F3FF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459171A91C706004F3FF1 /* AppDelegate.m */; };
+		B15459201A91C706004F3FF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B154591F1A91C706004F3FF1 /* Images.xcassets */; };
+		B15459231A91C706004F3FF1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15459211A91C706004F3FF1 /* LaunchScreen.xib */; };
+		B154592F1A91C706004F3FF1 /* VinScannerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B154592E1A91C706004F3FF1 /* VinScannerDemoTests.m */; };
+		B154593B1A91CB31004F3FF1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459391A91CB31004F3FF1 /* ViewController.m */; };
+		B154593C1A91CB31004F3FF1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B154593A1A91CB31004F3FF1 /* ViewController.xib */; };
+		B15459401A91CBBF004F3FF1 /* ScannerOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = B154593F1A91CBBF004F3FF1 /* ScannerOverlayController.m */; };
+		B15459481A91CCA2004F3FF1 /* aim_2d.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459421A91CCA2004F3FF1 /* aim_2d.png */; };
+		B15459491A91CCA2004F3FF1 /* backgroundLandscapeHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459431A91CCA2004F3FF1 /* backgroundLandscapeHorizontal.png */; };
+		B154594A1A91CCA2004F3FF1 /* backgroundLandscapeVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459441A91CCA2004F3FF1 /* backgroundLandscapeVertical.png */; };
+		B154594B1A91CCA2004F3FF1 /* backgroundPortraitHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459451A91CCA2004F3FF1 /* backgroundPortraitHorizontal.png */; };
+		B154594C1A91CCA2004F3FF1 /* backgroundPortraitVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459461A91CCA2004F3FF1 /* backgroundPortraitVertical.png */; };
+		B154594D1A91CCA2004F3FF1 /* light.png in Resources */ = {isa = PBXBuildFile; fileRef = B15459471A91CCA2004F3FF1 /* light.png */; };
+		B15459511A91CD6F004F3FF1 /* OverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = B154594F1A91CD6F004F3FF1 /* OverlayController.m */; };
+		B15459521A91CD6F004F3FF1 /* OverlayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B15459501A91CD6F004F3FF1 /* OverlayController.xib */; };
+		B15459561A91CE5B004F3FF1 /* libB4HVINScanner.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459551A91CE5B004F3FF1 /* libB4HVINScanner.a */; };
+		B15459581A91D323004F3FF1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459571A91D323004F3FF1 /* QuartzCore.framework */; };
+		B154595A1A91D341004F3FF1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459591A91D341004F3FF1 /* Security.framework */; };
+		B154595C1A91D34D004F3FF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B154595B1A91D34D004F3FF1 /* AVFoundation.framework */; };
+		B154595F1A91D37A004F3FF1 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B154595E1A91D37A004F3FF1 /* base64.m */; };
+		B15459611A91D39D004F3FF1 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */; };
+		B15459651A91D3D2004F3FF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459641A91D3D2004F3FF1 /* Foundation.framework */; };
+		B15459661A91D93D004F3FF1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459621A91D3B4004F3FF1 /* CoreVideo.framework */; };
+		B15459681A91D94C004F3FF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459671A91D94C004F3FF1 /* UIKit.framework */; };
+		B154596A1A91D957004F3FF1 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459691A91D957004F3FF1 /* CoreMedia.framework */; };
+		B154596C1A91D983004F3FF1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B154596B1A91D983004F3FF1 /* MobileCoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B15459291A91C706004F3FF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B15459071A91C706004F3FF1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B154590E1A91C706004F3FF1;
+			remoteInfo = VinScannerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B154590F1A91C706004F3FF1 /* VinScannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinScannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B15459131A91C706004F3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B15459141A91C706004F3FF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B15459161A91C706004F3FF1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B15459171A91C706004F3FF1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B154591F1A91C706004F3FF1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B15459221A91C706004F3FF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B15459281A91C706004F3FF1 /* VinScannerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinScannerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B154592D1A91C706004F3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B154592E1A91C706004F3FF1 /* VinScannerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VinScannerDemoTests.m; sourceTree = "<group>"; };
+		B15459381A91CB31004F3FF1 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B15459391A91CB31004F3FF1 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B154593A1A91CB31004F3FF1 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		B154593D1A91CBBF004F3FF1 /* B4HScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B4HScannerController.h; sourceTree = "<group>"; };
+		B154593E1A91CBBF004F3FF1 /* ScannerOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerOverlayController.h; sourceTree = "<group>"; };
+		B154593F1A91CBBF004F3FF1 /* ScannerOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerOverlayController.m; sourceTree = "<group>"; };
+		B15459421A91CCA2004F3FF1 /* aim_2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aim_2d.png; sourceTree = "<group>"; };
+		B15459431A91CCA2004F3FF1 /* backgroundLandscapeHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundLandscapeHorizontal.png; sourceTree = "<group>"; };
+		B15459441A91CCA2004F3FF1 /* backgroundLandscapeVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundLandscapeVertical.png; sourceTree = "<group>"; };
+		B15459451A91CCA2004F3FF1 /* backgroundPortraitHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPortraitHorizontal.png; sourceTree = "<group>"; };
+		B15459461A91CCA2004F3FF1 /* backgroundPortraitVertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundPortraitVertical.png; sourceTree = "<group>"; };
+		B15459471A91CCA2004F3FF1 /* light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light.png; sourceTree = "<group>"; };
+		B154594E1A91CD6F004F3FF1 /* OverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayController.h; sourceTree = "<group>"; };
+		B154594F1A91CD6F004F3FF1 /* OverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayController.m; sourceTree = "<group>"; };
+		B15459501A91CD6F004F3FF1 /* OverlayController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayController.xib; sourceTree = "<group>"; };
+		B15459541A91CE5B004F3FF1 /* B4HScannerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B4HScannerController.h; sourceTree = "<group>"; };
+		B15459551A91CE5B004F3FF1 /* libB4HVINScanner.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libB4HVINScanner.a; sourceTree = "<group>"; };
+		B15459571A91D323004F3FF1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B15459591A91D341004F3FF1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		B154595B1A91D34D004F3FF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B154595D1A91D37A004F3FF1 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		B154595E1A91D37A004F3FF1 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
+		B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		B15459621A91D3B4004F3FF1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		B15459641A91D3D2004F3FF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B15459671A91D94C004F3FF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B15459691A91D957004F3FF1 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B154596B1A91D983004F3FF1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B154590C1A91C706004F3FF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B154596C1A91D983004F3FF1 /* MobileCoreServices.framework in Frameworks */,
+				B154596A1A91D957004F3FF1 /* CoreMedia.framework in Frameworks */,
+				B15459681A91D94C004F3FF1 /* UIKit.framework in Frameworks */,
+				B15459661A91D93D004F3FF1 /* CoreVideo.framework in Frameworks */,
+				B15459651A91D3D2004F3FF1 /* Foundation.framework in Frameworks */,
+				B15459611A91D39D004F3FF1 /* libstdc++.6.0.9.dylib in Frameworks */,
+				B154595C1A91D34D004F3FF1 /* AVFoundation.framework in Frameworks */,
+				B154595A1A91D341004F3FF1 /* Security.framework in Frameworks */,
+				B15459581A91D323004F3FF1 /* QuartzCore.framework in Frameworks */,
+				B15459561A91CE5B004F3FF1 /* libB4HVINScanner.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B15459251A91C706004F3FF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B15459061A91C706004F3FF1 = {
+			isa = PBXGroup;
+			children = (
+				B154596B1A91D983004F3FF1 /* MobileCoreServices.framework */,
+				B15459691A91D957004F3FF1 /* CoreMedia.framework */,
+				B15459671A91D94C004F3FF1 /* UIKit.framework */,
+				B15459641A91D3D2004F3FF1 /* Foundation.framework */,
+				B15459621A91D3B4004F3FF1 /* CoreVideo.framework */,
+				B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */,
+				B154595B1A91D34D004F3FF1 /* AVFoundation.framework */,
+				B15459591A91D341004F3FF1 /* Security.framework */,
+				B15459571A91D323004F3FF1 /* QuartzCore.framework */,
+				B15459111A91C706004F3FF1 /* VinScannerDemo */,
+				B154592B1A91C706004F3FF1 /* VinScannerDemoTests */,
+				B15459101A91C706004F3FF1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B15459101A91C706004F3FF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B154590F1A91C706004F3FF1 /* VinScannerDemo.app */,
+				B15459281A91C706004F3FF1 /* VinScannerDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B15459111A91C706004F3FF1 /* VinScannerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B15459531A91CE5B004F3FF1 /* library */,
+				B15459411A91CCA2004F3FF1 /* images */,
+				B15459161A91C706004F3FF1 /* AppDelegate.h */,
+				B15459171A91C706004F3FF1 /* AppDelegate.m */,
+				B154591F1A91C706004F3FF1 /* Images.xcassets */,
+				B15459211A91C706004F3FF1 /* LaunchScreen.xib */,
+				B15459121A91C706004F3FF1 /* Supporting Files */,
+				B15459381A91CB31004F3FF1 /* ViewController.h */,
+				B15459391A91CB31004F3FF1 /* ViewController.m */,
+				B154593A1A91CB31004F3FF1 /* ViewController.xib */,
+				B154593D1A91CBBF004F3FF1 /* B4HScannerController.h */,
+				B154593E1A91CBBF004F3FF1 /* ScannerOverlayController.h */,
+				B154593F1A91CBBF004F3FF1 /* ScannerOverlayController.m */,
+				B154594E1A91CD6F004F3FF1 /* OverlayController.h */,
+				B154594F1A91CD6F004F3FF1 /* OverlayController.m */,
+				B15459501A91CD6F004F3FF1 /* OverlayController.xib */,
+			);
+			path = VinScannerDemo;
+			sourceTree = "<group>";
+		};
+		B15459121A91C706004F3FF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B15459131A91C706004F3FF1 /* Info.plist */,
+				B15459141A91C706004F3FF1 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B154592B1A91C706004F3FF1 /* VinScannerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				B154592E1A91C706004F3FF1 /* VinScannerDemoTests.m */,
+				B154592C1A91C706004F3FF1 /* Supporting Files */,
+			);
+			path = VinScannerDemoTests;
+			sourceTree = "<group>";
+		};
+		B154592C1A91C706004F3FF1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B154592D1A91C706004F3FF1 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B15459411A91CCA2004F3FF1 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B15459421A91CCA2004F3FF1 /* aim_2d.png */,
+				B15459431A91CCA2004F3FF1 /* backgroundLandscapeHorizontal.png */,
+				B15459441A91CCA2004F3FF1 /* backgroundLandscapeVertical.png */,
+				B15459451A91CCA2004F3FF1 /* backgroundPortraitHorizontal.png */,
+				B15459461A91CCA2004F3FF1 /* backgroundPortraitVertical.png */,
+				B15459471A91CCA2004F3FF1 /* light.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		B15459531A91CE5B004F3FF1 /* library */ = {
+			isa = PBXGroup;
+			children = (
+				B154595D1A91D37A004F3FF1 /* base64.h */,
+				B154595E1A91D37A004F3FF1 /* base64.m */,
+				B15459541A91CE5B004F3FF1 /* B4HScannerController.h */,
+				B15459551A91CE5B004F3FF1 /* libB4HVINScanner.a */,
+			);
+			path = library;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B154590E1A91C706004F3FF1 /* VinScannerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B15459321A91C706004F3FF1 /* Build configuration list for PBXNativeTarget "VinScannerDemo" */;
+			buildPhases = (
+				B154590B1A91C706004F3FF1 /* Sources */,
+				B154590C1A91C706004F3FF1 /* Frameworks */,
+				B154590D1A91C706004F3FF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinScannerDemo;
+			productName = VinScannerDemo;
+			productReference = B154590F1A91C706004F3FF1 /* VinScannerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B15459271A91C706004F3FF1 /* VinScannerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B15459351A91C706004F3FF1 /* Build configuration list for PBXNativeTarget "VinScannerDemoTests" */;
+			buildPhases = (
+				B15459241A91C706004F3FF1 /* Sources */,
+				B15459251A91C706004F3FF1 /* Frameworks */,
+				B15459261A91C706004F3FF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B154592A1A91C706004F3FF1 /* PBXTargetDependency */,
+			);
+			name = VinScannerDemoTests;
+			productName = VinScannerDemoTests;
+			productReference = B15459281A91C706004F3FF1 /* VinScannerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B15459071A91C706004F3FF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = bees4honey;
+				TargetAttributes = {
+					B154590E1A91C706004F3FF1 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B15459271A91C706004F3FF1 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = B154590E1A91C706004F3FF1;
+					};
+				};
+			};
+			buildConfigurationList = B154590A1A91C706004F3FF1 /* Build configuration list for PBXProject "VinScannerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B15459061A91C706004F3FF1;
+			productRefGroup = B15459101A91C706004F3FF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B154590E1A91C706004F3FF1 /* VinScannerDemo */,
+				B15459271A91C706004F3FF1 /* VinScannerDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B154590D1A91C706004F3FF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B154594C1A91CCA2004F3FF1 /* backgroundPortraitVertical.png in Resources */,
+				B154594B1A91CCA2004F3FF1 /* backgroundPortraitHorizontal.png in Resources */,
+				B154594D1A91CCA2004F3FF1 /* light.png in Resources */,
+				B15459231A91C706004F3FF1 /* LaunchScreen.xib in Resources */,
+				B15459521A91CD6F004F3FF1 /* OverlayController.xib in Resources */,
+				B154594A1A91CCA2004F3FF1 /* backgroundLandscapeVertical.png in Resources */,
+				B15459491A91CCA2004F3FF1 /* backgroundLandscapeHorizontal.png in Resources */,
+				B15459481A91CCA2004F3FF1 /* aim_2d.png in Resources */,
+				B154593C1A91CB31004F3FF1 /* ViewController.xib in Resources */,
+				B15459201A91C706004F3FF1 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B15459261A91C706004F3FF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B154590B1A91C706004F3FF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B154595F1A91D37A004F3FF1 /* base64.m in Sources */,
+				B154593B1A91CB31004F3FF1 /* ViewController.m in Sources */,
+				B15459511A91CD6F004F3FF1 /* OverlayController.m in Sources */,
+				B15459401A91CBBF004F3FF1 /* ScannerOverlayController.m in Sources */,
+				B15459181A91C706004F3FF1 /* AppDelegate.m in Sources */,
+				B15459151A91C706004F3FF1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B15459241A91C706004F3FF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B154592F1A91C706004F3FF1 /* VinScannerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B154592A1A91C706004F3FF1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B154590E1A91C706004F3FF1 /* VinScannerDemo */;
+			targetProxy = B15459291A91C706004F3FF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B15459211A91C706004F3FF1 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B15459221A91C706004F3FF1 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B15459301A91C706004F3FF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B15459311A91C706004F3FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B15459331A91C706004F3FF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = VinScannerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VinScannerDemo/library",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B15459341A91C706004F3FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = VinScannerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/VinScannerDemo/library",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B15459361A91C706004F3FF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VinScannerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VinScannerDemo.app/VinScannerDemo";
+			};
+			name = Debug;
+		};
+		B15459371A91C706004F3FF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = VinScannerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VinScannerDemo.app/VinScannerDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B154590A1A91C706004F3FF1 /* Build configuration list for PBXProject "VinScannerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B15459301A91C706004F3FF1 /* Debug */,
+				B15459311A91C706004F3FF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B15459321A91C706004F3FF1 /* Build configuration list for PBXNativeTarget "VinScannerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B15459331A91C706004F3FF1 /* Debug */,
+				B15459341A91C706004F3FF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B15459351A91C706004F3FF1 /* Build configuration list for PBXNativeTarget "VinScannerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B15459361A91C706004F3FF1 /* Debug */,
+				B15459371A91C706004F3FF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B15459071A91C706004F3FF1 /* Project object */;
+}
