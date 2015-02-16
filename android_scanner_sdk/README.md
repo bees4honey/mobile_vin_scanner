@@ -1,7 +1,7 @@
 # Android Mobile VIN Scanner SDK contains
 
-1. libb4hvinscanner.so — library which implements scanning and recognition functionality. 
-2. VINScanner—iOS—Demo - demo project of simple app which implements VIN scanning functionality. It shows in real code how to use our library.
+1. libs/ — directory containing native libraries which implement scanning and recognition functionality. 
+2. VinScannerDemo - demo project of simple app which implements VIN scanning functionality. It shows in real code how to use our library.
 
 ## Licensing & Support
 

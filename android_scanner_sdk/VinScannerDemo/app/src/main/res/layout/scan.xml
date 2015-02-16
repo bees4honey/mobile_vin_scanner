@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    <SurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/camera_view">
+    </SurfaceView>
+
+    <FrameLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <com.bees4honey.vinscanner.ViewFinder
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/viewfinder_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
+
+        <ImageView android:id="@+id/image_2d_aim"
+                android:layout_width="200dp"
+                   android:layout_height="200dp"
+                   android:layout_gravity="center"
+                   android:scaleType="centerInside"
+                   android:padding="10dp"
+                   android:background="@drawable/aim_2d"/>
+
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:height="40px"
+                android:width="40px"
+                android:id="@+id/TorchButton"
+                android:src="@drawable/light"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+        <ImageButton
+                android:id="@+id/orientationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:src="@drawable/rotate"
+                android:background="@null"
+                android:contentDescription="@null"/>
+
+        <com.bees4honey.vinscanner.RotatableTextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/tv_vincode"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:textColor="@android:color/black"
+                android:visibility="invisible"
+                android:padding="5dp"
+                android:textSize="20sp"/>
+    </FrameLayout>
+</FrameLayout>
