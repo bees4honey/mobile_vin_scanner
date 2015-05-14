@@ -111,7 +111,8 @@
 
 - (void)setBackgroundForScanOrientation:(B4HScannerOrientation)scanOrientation {
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    BOOL isLandscape =  UIDeviceOrientationIsLandscape(orientation);
+    BOOL isLandscape = ( (orientation) == UIInterfaceOrientationLandscapeLeft ||
+                        (orientation) == UIInterfaceOrientationLandscapeRight);
     
     if (scanOrientation == B4HScannerHorizontal) {
         if (isLandscape) {
