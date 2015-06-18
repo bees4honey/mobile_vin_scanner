@@ -24,7 +24,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * Wrapper Activity for native VIN scanner library. Activity can function in two modes: single scan and continuous scan.
- * In single mode the first scanned VIN-code is returned in intent to calling activity with {@link #SCANNED_CODE} key.
+ * In single mode the first scanned VIN-code is returned in intent.
  * In continuous mode the scanned code is shown to user and then scanner continues the scanning process.
  * Code to start Scanner activity in single mode:
  *
@@ -36,13 +36,13 @@ import java.util.concurrent.CountDownLatch;
  * }
  * </pre>
  *
- * Code to get the VIN code scanned in the single mode:
+ * Code to get scanned VIN if scanner was started in single mode:
  *
  * <pre>
  * {@code
  * protected void onActivityResult(int requestCode, int resultCode, Intent data) {
  *     if (requestCode == SCAN_CODE && resultCode == RESULT_OK) {
- *         String scannedVIN = data.getStringExtra(com.bees4honey.vinscanner.Scanner.SINGLE_SCAN);
+ *         String scannedVIN = data.getStringExtra(com.bees4honey.vinscanner.Scanner.SCANNED_CODE);
  *         Log.d("VinScanner", "Scanned vin: " + scannedVIN);
  *     }
  * }
