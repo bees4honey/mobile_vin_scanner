@@ -1,6 +1,16 @@
+# System files
 .DS_Store
-*.iml
+Thumbs.db
+
+# Miscellaneous
 gen
 out
 bin
-android_scanner_sdk/VinScanner-Android-Demo/.idea/
+*.log
+
+# Android Studio & Gradle:
+*.iml
+.gradle
+.idea
+build
+captures

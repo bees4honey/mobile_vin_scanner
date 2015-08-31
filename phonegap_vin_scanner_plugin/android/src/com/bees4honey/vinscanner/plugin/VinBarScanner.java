@@ -2,7 +2,7 @@ package com.bees4honey.vinscanner.plugin;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.bees4honey.vinscanner.Scanner;
+import com.bees4honey.vinscanner.ScannerActivity;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
@@ -35,7 +35,7 @@ public class VinBarScanner extends CordovaPlugin {
     public void scan() {
         Intent intentScan = new Intent("com.bees4honey.vinscanner.plugin.SCAN");
         intentScan.addCategory(Intent.CATEGORY_DEFAULT);
-        intentScan.putExtra(Scanner.SINGLE_SCAN, true);
+        intentScan.putExtra(ScannerActivity.SINGLE_SCAN, true);
 
         this.cordova.startActivityForResult((CordovaPlugin) this, intentScan, REQUEST_CODE);
     }
@@ -45,7 +45,7 @@ public class VinBarScanner extends CordovaPlugin {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put("VINCode", intent.getStringExtra(Scanner.SCANNED_CODE));
+                    obj.put("VINCode", intent.getStringExtra(ScannerActivity.SCANNED_CODE));
                     obj.put("cancelled", false);
                 } catch (JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");

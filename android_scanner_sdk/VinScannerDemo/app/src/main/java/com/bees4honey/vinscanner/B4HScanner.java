@@ -14,7 +14,7 @@ public class B4HScanner
      * The {@link #LICENSE_VERIFICATION_LIMIT_REACHED} status shows that license file is absent and amount of scans reached the maximum value and library will scan no more codes.
      * All other license statuses show that some errors occurred during license checking process.
      */
-    public static enum SdkStatus {
+    public enum SdkStatus {
 
         /**
          * License status not specified
@@ -127,7 +127,6 @@ public class B4HScanner
         System.loadLibrary("b4hvinscanner");
     }
 
-    // constructor
     public B4HScanner()
     {
         super();
@@ -141,6 +140,7 @@ public class B4HScanner
      * @param context current context.
      * @return scanned code or NULL if VIN code is not found.
      */
+    @SuppressWarnings("unused")
     public native String parse( byte []data, int width, int height, Context context);
 
     /**
@@ -148,6 +148,7 @@ public class B4HScanner
      * @param context current context
      * @return the int status value of the license.
      */
+    @SuppressWarnings("unused")
     public native int status(Context context);
 
     /**
@@ -155,6 +156,7 @@ public class B4HScanner
      * @param context current status.
      * @return enum value containing status of the library.
      */
+    @SuppressWarnings("unused")
     public SdkStatus getStatus(Context context) {
         int statusCode = status(context);
 
@@ -169,8 +171,10 @@ public class B4HScanner
 
     /**
      *  Get version of Bees4honey VIN scanner library. Method returns  "2.0" value by default.
-     *  NOTE: Method throws an exception, if library has too old version.
+     *  NOTE: Since method wasn't presented in library versions previous to 2.0 it may throw an exception
+     *  if you use it with outdated library.
      *  @return Version of scanner library.
      */
+    @SuppressWarnings("unused")
     public native String version();
 }

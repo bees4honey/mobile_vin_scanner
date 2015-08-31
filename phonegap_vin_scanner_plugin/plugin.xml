@@ -38,7 +38,7 @@ id reference into Scanner.java before building their projects.
     </config-file>
     <!-- add Bees4Honey Activity to the "application" section of AndroidManifest.xml file -->
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
-      <activity android:name="com.bees4honey.vinscanner.Scanner"
+      <activity android:name="com.bees4honey.vinscanner.ScannerActivity"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
@@ -57,23 +57,20 @@ id reference into Scanner.java before building their projects.
     <source-file src="android/libs/armeabi-v7a/libb4hvinscanner.so" target-dir="libs/armeabi-v7a" />
     <source-file src="android/libs/x86/libb4hvinscanner.so" target-dir="libs/x86" />
     <!-- copy Bees4honey resources (images, etc) -->
-    <source-file src="android/res/raw/scanned.wav" target-dir="res/raw"/>
     <source-file src="android/res/drawable/light.png" target-dir="res/drawable"/>
     <source-file src="android/res/drawable/light_on.png" target-dir="res/drawable"/>
     <source-file src="android/res/drawable/rotate.png" target-dir="res/drawable"/>
-    <source-file src="android/res/drawable/aim_2d_rotated90.9.png" target-dir="res/drawable"/>
-    <source-file src="android/res/drawable/aim_2d_rotated180.9.png" target-dir="res/drawable"/>
-    <source-file src="android/res/drawable/aim_2d_rotated270.9.png" target-dir="res/drawable"/>
-    <source-file src="android/res/drawable/aim_2d.9.png" target-dir="res/drawable"/>
-    <source-file src="android/res/layout/scan.xml" target-dir="res/layout"/>
+     <source-file src="android/res/drawable/aim_2d.9.png" target-dir="res/drawable"/>
+    <source-file src="android/res/layout/scanner_activity.xml" target-dir="res/layout"/>
+    <source-file src="android/res/layout/scanner_fragment.xml" target-dir="res/layout"/>
     <!-- add Bees4honey plugin source code -->
     <source-file src="android/src/com/bees4honey/vinscanner/plugin/VinBarScanner.java" target-dir="src/com/bees4honey/vinscanner/plugin"/>
     <source-file src="android/src/com/bees4honey/vinscanner/B4HScanner.java" target-dir="src/com/bees4honey/vinscanner"/>
-    <source-file src="android/src/com/bees4honey/vinscanner/Scanner.java" target-dir="src/com/bees4honey/vinscanner"/>
-    <source-file src="android/src/com/bees4honey/vinscanner/TorchControl.java" target-dir="src/com/bees4honey/vinscanner"/>
+    <source-file src="android/src/com/bees4honey/vinscanner/ImageBuffer.java" target-dir="src/com/bees4honey/vinscanner"/>
+    <source-file src="android/src/com/bees4honey/vinscanner/ScannerActivity.java" target-dir="src/com/bees4honey/vinscanner"/>
+    <source-file src="android/src/com/bees4honey/vinscanner/ScannerFragment.java" target-dir="src/com/bees4honey/vinscanner"/>
+    <source-file src="android/src/com/bees4honey/vinscanner/ScannerListener.java" target-dir="src/com/bees4honey/vinscanner"/>
     <source-file src="android/src/com/bees4honey/vinscanner/ViewFinder.java" target-dir="src/com/bees4honey/vinscanner"/>
-    <source-file src="android/src/com/bees4honey/vinscanner/RotatableTextView.java" target-dir="src/com/bees4honey/vinscanner"/>
-    <source-file src="android/src/com/bees4honey/vinscanner/SupportedOrientations.java" target-dir="src/com/bees4honey/vinscanner"/>
   </platform>
 
   <!-- ios -->

@@ -1,12 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
-    <string name="app_name">VIN Scanner</string>
-    <item type="id" name="decode" format="integer">2131099648</item>
-    <item name="decoded" type="id" format="integer">0x7f060003</item>
-    <item name="focused" type="id" format="integer">0x7f060001</item>
-
-    <item type="id" format="integer" name="quit">0x7f060003</item>
-
-<item type="id" name="TorchOnOff" format="integer">0x7f060009</item>
+    <string name="app_name">VinScanner</string>
 </resources>

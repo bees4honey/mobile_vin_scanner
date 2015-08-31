@@ -21,8 +21,8 @@ There are two ways to try our VIN scanning technology.
 2. Android https://play.google.com/store/apps/details?id=com.bees4honey.vinscanner
 
 ### Download appropriate project to try it in your app:
-1. ios_scanner - native iOS project, which you can build and try. 
-2. android_scanner - native Android project.
+1. ios_scanner_sdk - native iOS project, which you can build and try. 
+2. android_scanner_sdk - native Android project.
 3. phonegap_vin_scanner_plugin - PhoneGap plugin for iOS and Android platforms.
 
 ## Licensing
@@ -43,14 +43,18 @@ Thanks!
 
 We also support Phonegap VIN Scanner plugin for iOS and Android platforms.
 
-WARNING: since VIN Scanner plugin heavily uses native code for both iOS and Android platforms, the Adobe Phonegap Build cloud service is not supported. To use our plugin you need to build project using Phonegap command line tools.
+**WARNING:** since VIN Scanner plugin heavily uses native code for both iOS and Android platforms, the Adobe Phonegap Build cloud service is not supported. To use our plugin you need to build project using Phonegap command line tools.
+
+Only Android versions 4.0 and higher and iOS versions 7.0 and higher are supported in Phonegap plugin.
 
 Installation instructions:
 
 1. Generate your project using "phonegap create" command.
 2. Add a plugin to your project using the following command:
+
 ```
 phonegap plugin add https://github.com/bees4honey/mobile_vin_scanner#:/phonegap_vin_scanner_plugin
 ```
+
 
 You can find usage example in plugins/com.bees4honey.vinscanner/index.html file in Phonegap project's folder.

@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /*
- * View which for displaying scanning area and laser
+ * View which for displaying scanning area for both 1D and 2D vin codes
  */
 public class ViewFinder extends View {
     public enum ContentOrientation {
