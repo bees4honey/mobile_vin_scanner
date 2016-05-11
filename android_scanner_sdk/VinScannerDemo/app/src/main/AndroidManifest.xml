@@ -12,7 +12,7 @@
                  android:icon="@mipmap/ic_launcher"
                  android:theme="@style/AppTheme">
         <activity android:name="com.bees4honey.vinscanner.ScannerActivity"
-                  android:configChanges="keyboardHidden|orientation|screenSize">
+            android:configChanges="keyboardHidden|orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

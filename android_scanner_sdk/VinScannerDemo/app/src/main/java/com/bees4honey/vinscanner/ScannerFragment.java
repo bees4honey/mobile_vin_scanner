@@ -158,7 +158,7 @@ public class ScannerFragment extends Fragment {
         camera.setDisplayOrientation(camOrientation);
     }
 
-    private static Camera getCameraInstance() {
+    private Camera getCameraInstance() {
         Camera c = null;
         try {
             c = Camera.open(); // attempt to get a Camera instance
@@ -287,10 +287,13 @@ public class ScannerFragment extends Fragment {
                                     (!f.isScanVertically() && buffer.orientation == ImageBuffer.ORIENTATION_PORTRAIT)) {
                                 int w = buffer.height;
                                 int h = buffer.width;
+                                Log.d(TAG, "Will rotate camera image");
                                 byte []data = rotateCameraImage(buffer.data, buffer.width, buffer.height);
                                 buffer = new ImageBuffer(data, w, h, ImageBuffer.ORIENTATION_UNKNOWN);
                             }
 
+                            Log.d(TAG, "Buffer size: " + buffer.data.length +
+                                    ", buffer width: " + buffer.width + ", buffer height: " + buffer.height);
                             String code = scanner.parse(buffer.data, buffer.width, buffer.height, context);
                             if (code != null) {
                                 listener.scannedCode(code);

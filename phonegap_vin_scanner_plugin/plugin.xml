@@ -41,8 +41,8 @@ id reference into Scanner.java before building their projects.
       <activity android:name="com.bees4honey.vinscanner.ScannerActivity"
                 android:screenOrientation="landscape"
                 android:configChanges="orientation|keyboardHidden"
-                android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                android:windowSoftInputMode="stateAlwaysHidden">
+                android:windowSoftInputMode="stateAlwaysHidden"
+                android:theme="@style/Theme.AppCompat">
 
         <intent-filter>
           <action android:name="com.bees4honey.vinscanner.plugin.SCAN"/>
@@ -71,6 +71,8 @@ id reference into Scanner.java before building their projects.
     <source-file src="android/src/com/bees4honey/vinscanner/ScannerFragment.java" target-dir="src/com/bees4honey/vinscanner"/>
     <source-file src="android/src/com/bees4honey/vinscanner/ScannerListener.java" target-dir="src/com/bees4honey/vinscanner"/>
     <source-file src="android/src/com/bees4honey/vinscanner/ViewFinder.java" target-dir="src/com/bees4honey/vinscanner"/>
+        
+    <framework src="com.android.support:appcompat-v7:23+" />
   </platform>
 
   <!-- ios -->
