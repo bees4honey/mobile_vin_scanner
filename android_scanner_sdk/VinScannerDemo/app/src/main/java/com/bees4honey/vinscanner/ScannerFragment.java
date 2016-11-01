@@ -45,6 +45,8 @@ public class ScannerFragment extends Fragment {
     private static final int DECODE = 2131099648;
     private static final long DECODE_DELAY_MSECS = 100;
 
+    private static final int AUTOFOCUS_TIMEOUT = 1500;
+
     private static final String TAG = ScannerFragment.class.getCanonicalName();
 
     private SurfaceView surfaceView;
@@ -58,13 +60,18 @@ public class ScannerFragment extends Fragment {
     private boolean scanVertically;
     private boolean flashOn;    //shows if camera flash is on or off
 
-    private com.bees4honey.vinscanner.ScannerListener listener;
+    private boolean isPreviewing;
+
+    private final Runnable autoFocusRunnable;
+    private long lastAutofocusTime;
+
+    private ScannerListener listener;
 
     /**
      * Set fragment's listener.
      * @param listener an implementation of {@link ScannerListener} interface.
      */
-    public void setListener(com.bees4honey.vinscanner.ScannerListener listener) {
+    public void setListener(ScannerListener listener) {
         this.listener = listener;
     }
 
@@ -72,7 +79,7 @@ public class ScannerFragment extends Fragment {
      * Get ScannerFragment listener.
      * @return returns current ScannerFragment. If listener was never set for fragment then null is returned.
      */
-    public com.bees4honey.vinscanner.ScannerListener getListener() {
+    public ScannerListener getListener() {
         return listener;
     }
 
@@ -83,6 +90,39 @@ public class ScannerFragment extends Fragment {
         flashOn = false;
         handler = new ScannerHandler(new WeakReference<ScannerFragment>(this));
         camOrientation = 0;
+
+        lastAutofocusTime = java.lang.System.currentTimeMillis();
+
+        /*
+         * Setting camera focus mode to Camera.Parameters.FOCUS_MODE_AUTO may actually be not enough for fast and reliable scanning
+         * If device camera would be forced to autofocus frequently enough it may provide way better results on many devices.
+         */
+        autoFocusRunnable = new Runnable() {
+            @Override
+            public void run() {
+
+                long currentTime = java.lang.System.currentTimeMillis();
+
+                handler.postDelayed(autoFocusRunnable, AUTOFOCUS_TIMEOUT / 2);
+
+                if (camera == null || !isPreviewing ||
+                        (currentTime - lastAutofocusTime < AUTOFOCUS_TIMEOUT)) {
+                    return;
+                }
+
+                lastAutofocusTime = currentTime;
+
+                camera.autoFocus(new Camera.AutoFocusCallback() {
+
+                    @Override
+                    public void onAutoFocus(boolean success, Camera camera) {
+                        if (!success) {
+                            Log.d(TAG, "onAutoFocus failed");
+                        }
+                    }
+                });
+            }
+        };
     }
 
     @Override
@@ -109,6 +149,7 @@ public class ScannerFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         if (surfaceView != null) {
             this.camera = getCameraInstance();
             if (camera != null) {
@@ -120,7 +161,7 @@ public class ScannerFragment extends Fragment {
             }
         }
 
-        if ( (getActivity() != null) && (orientationListener == null) ) {
+        if ((getActivity() != null) && (orientationListener == null)) {
             orientationListener = new OrientationEventListener(getActivity()) {
                 private int orientationPrev = 0;
 
@@ -134,14 +175,16 @@ public class ScannerFragment extends Fragment {
             };
             orientationListener.enable();
         }
+
+        handler.post(autoFocusRunnable);
     }
 
     private void setCameraDisplayOrientation() {
         if (camera == null) {
             return;
         }
-        Display display = ((WindowManager)getActivity().getSystemService(Activity.WINDOW_SERVICE)).getDefaultDisplay();
-        switch (display.getRotation() ) {
+        Display display = ((WindowManager) getActivity().getSystemService(Activity.WINDOW_SERVICE)).getDefaultDisplay();
+        switch (display.getRotation()) {
             case Surface.ROTATION_0:
                 camOrientation = 90;
                 break;
@@ -170,10 +213,11 @@ public class ScannerFragment extends Fragment {
     }
 
 
-
     @Override
     public void onPause() {
         super.onPause();
+
+        handler.removeCallbacks(autoFocusRunnable);
 
         if (orientationListener != null) {
             orientationListener.disable();
@@ -279,16 +323,16 @@ public class ScannerFragment extends Fragment {
                     // message called when getting image from camera
                     ImageBuffer buffer = (ImageBuffer) msg.obj;
                     ScannerFragment f = fragment.get();
-                    if (f!= null) {
+                    if (f != null) {
                         Context context = f.getActivity();
-                        com.bees4honey.vinscanner.ScannerListener listener = f.getListener();
+                        ScannerListener listener = f.getListener();
                         if (context != null && listener != null) {
                             if ((f.isScanVertically() && buffer.orientation == ImageBuffer.ORIENTATION_LANDSCAPE) ||
                                     (!f.isScanVertically() && buffer.orientation == ImageBuffer.ORIENTATION_PORTRAIT)) {
                                 int w = buffer.height;
                                 int h = buffer.width;
                                 Log.d(TAG, "Will rotate camera image");
-                                byte []data = rotateCameraImage(buffer.data, buffer.width, buffer.height);
+                                byte[] data = rotateCameraImage(buffer.data, buffer.width, buffer.height);
                                 buffer = new ImageBuffer(data, w, h, ImageBuffer.ORIENTATION_UNKNOWN);
                             }
 
@@ -321,7 +365,7 @@ public class ScannerFragment extends Fragment {
         private Camera camera;
         Camera.Size previewSize;
 
-        public SurfaceCamCallback(Camera camera) {
+        SurfaceCamCallback(Camera camera) {
             this.camera = camera;
         }
 
@@ -342,6 +386,8 @@ public class ScannerFragment extends Fragment {
                     camera.setPreviewDisplay(holder);
                     camera.setPreviewCallback(this);
                     camera.startPreview();
+                    isPreviewing = true;
+
                 } catch (Exception e) {
                     Log.e(TAG, "Exception raised configuring camera: " + e.getMessage());
                 }
@@ -365,9 +411,7 @@ public class ScannerFragment extends Fragment {
             setAcceptableFrameRate(cameraParams);
 
             if (getActivity().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_AUTOFOCUS)) {
-                if (cameraParams.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)) {
-                    cameraParams.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-                } else if (cameraParams.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
+                if (cameraParams.getSupportedFocusModes().contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
                     cameraParams.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
                 }
             }
@@ -423,12 +467,13 @@ public class ScannerFragment extends Fragment {
             if (camera != null) {
                 camera.setPreviewCallback(null);
                 camera.stopPreview();
+                isPreviewing = false;
             }
         }
 
         @Override
         public void onPreviewFrame(byte[] data, Camera camera) {
-            if (handler.hasMessages(DECODE) || (previewSize == null) ) {
+            if (handler.hasMessages(DECODE) || (previewSize == null)) {
                 return;
             }
 
