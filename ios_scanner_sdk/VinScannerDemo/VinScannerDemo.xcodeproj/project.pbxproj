@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2685DD1DF7044700AC79A4 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */; };
 		B15459151A91C706004F3FF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459141A91C706004F3FF1 /* main.m */; };
 		B15459181A91C706004F3FF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459171A91C706004F3FF1 /* AppDelegate.m */; };
 		B15459201A91C706004F3FF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B154591F1A91C706004F3FF1 /* Images.xcassets */; };
@@ -28,7 +29,6 @@
 		B154595A1A91D341004F3FF1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459591A91D341004F3FF1 /* Security.framework */; };
 		B154595C1A91D34D004F3FF1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B154595B1A91D34D004F3FF1 /* AVFoundation.framework */; };
 		B154595F1A91D37A004F3FF1 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B154595E1A91D37A004F3FF1 /* base64.m */; };
-		B15459611A91D39D004F3FF1 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */; };
 		B15459651A91D3D2004F3FF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459641A91D3D2004F3FF1 /* Foundation.framework */; };
 		B15459661A91D93D004F3FF1 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459621A91D3B4004F3FF1 /* CoreVideo.framework */; };
 		B15459681A91D94C004F3FF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15459671A91D94C004F3FF1 /* UIKit.framework */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		B154590F1A91C706004F3FF1 /* VinScannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinScannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15459131A91C706004F3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B15459141A91C706004F3FF1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		B154595B1A91D34D004F3FF1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B154595D1A91D37A004F3FF1 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		B154595E1A91D37A004F3FF1 /* base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = base64.m; sourceTree = "<group>"; };
-		B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		B15459621A91D3B4004F3FF1 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		B15459641A91D3D2004F3FF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B15459671A91D94C004F3FF1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -92,12 +92,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D2685DD1DF7044700AC79A4 /* libstdc++.tbd in Frameworks */,
 				B154596C1A91D983004F3FF1 /* MobileCoreServices.framework in Frameworks */,
 				B154596A1A91D957004F3FF1 /* CoreMedia.framework in Frameworks */,
 				B15459681A91D94C004F3FF1 /* UIKit.framework in Frameworks */,
 				B15459661A91D93D004F3FF1 /* CoreVideo.framework in Frameworks */,
 				B15459651A91D3D2004F3FF1 /* Foundation.framework in Frameworks */,
-				B15459611A91D39D004F3FF1 /* libstdc++.6.0.9.dylib in Frameworks */,
 				B154595C1A91D34D004F3FF1 /* AVFoundation.framework in Frameworks */,
 				B154595A1A91D341004F3FF1 /* Security.framework in Frameworks */,
 				B15459581A91D323004F3FF1 /* QuartzCore.framework in Frameworks */,
@@ -115,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D2685DB1DF7044700AC79A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B15459061A91C706004F3FF1 = {
 			isa = PBXGroup;
 			children = (
@@ -123,13 +131,13 @@
 				B15459671A91D94C004F3FF1 /* UIKit.framework */,
 				B15459641A91D3D2004F3FF1 /* Foundation.framework */,
 				B15459621A91D3B4004F3FF1 /* CoreVideo.framework */,
-				B15459601A91D39D004F3FF1 /* libstdc++.6.0.9.dylib */,
 				B154595B1A91D34D004F3FF1 /* AVFoundation.framework */,
 				B15459591A91D341004F3FF1 /* Security.framework */,
 				B15459571A91D323004F3FF1 /* QuartzCore.framework */,
 				B15459111A91C706004F3FF1 /* VinScannerDemo */,
 				B154592B1A91C706004F3FF1 /* VinScannerDemoTests */,
 				B15459101A91C706004F3FF1 /* Products */,
+				5D2685DB1DF7044700AC79A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

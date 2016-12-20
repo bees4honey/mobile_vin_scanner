@@ -84,6 +84,10 @@ id reference into Scanner.java before building their projects.
       </feature>
     </config-file>
 
+    <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+      <string>Camera is required to scan VIN Codes</string>
+    </config-file>
+
     <asset src="www/js/b4hvinscanner.js" target="js/b4hvinscanner.js"/>
 
     <header-file src="ios/src/B4HOverlayViewController.h" />
@@ -107,12 +111,12 @@ id reference into Scanner.java before building their projects.
     <resource-file src="ios/images/backgroundPortraitHorizontal.png"/>
     <resource-file src="ios/images/backgroundPortraitVertical.png"/>
     <framework src="libiconv.dylib" />
+    <framework src="libstdc++.tbd" />
     <framework src="AVFoundation.framework" />
     <framework src="AssetsLibrary.framework" />
     <framework src="Security.framework" />
     <framework src="CoreVideo.framework" />
     <framework src="QuartzCore.framework" />
-    <framework src="libstdc++.6.dylib" />
   </platform>
 
 </plugin>
