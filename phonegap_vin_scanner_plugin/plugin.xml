@@ -54,8 +54,10 @@ id reference into Scanner.java before building their projects.
     <asset src="www/js/b4hvinscanner.js" target="js/b4hvinscanner.js"/>
     <!-- copy Bees4honey Lib resources -->
     <source-file src="android/libs/armeabi/libb4hvinscanner.so" target-dir="libs/armeabi" />
+    <source-file src="android/libs/arm64-v8a/libb4hvinscanner.so" target-dir="libs/arm64-v8a" />
     <source-file src="android/libs/armeabi-v7a/libb4hvinscanner.so" target-dir="libs/armeabi-v7a" />
     <source-file src="android/libs/x86/libb4hvinscanner.so" target-dir="libs/x86" />
+    <source-file src="android/libs/x86_64/libb4hvinscanner.so" target-dir="libs/x86_64" />
     <!-- copy Bees4honey resources (images, etc) -->
     <source-file src="android/res/drawable/light.png" target-dir="res/drawable"/>
     <source-file src="android/res/drawable/light_on.png" target-dir="res/drawable"/>
