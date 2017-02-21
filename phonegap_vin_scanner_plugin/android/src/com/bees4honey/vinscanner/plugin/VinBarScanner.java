@@ -57,10 +57,10 @@ public class VinBarScanner extends CordovaPlugin {
                 try {
                     obj.put("VINCode", "NON RESULT");
                     obj.put("cancelled", "true");
+                    this.cbContext.success(obj);
                 } catch (JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
                 }
-                this.cbContext.success(obj);
             } else {
                 this.cbContext.error("Invalid Activity");
             }
