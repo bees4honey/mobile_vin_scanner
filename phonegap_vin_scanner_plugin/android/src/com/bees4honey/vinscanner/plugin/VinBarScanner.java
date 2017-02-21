@@ -23,7 +23,12 @@ public class VinBarScanner extends CordovaPlugin {
         this.cbContext = callbackContext;
 
         if (action.equals(ACTION_SCAN)) {
-            scan();
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    scan();
+                }
+            });
         } else {
             callbackContext.error("Invalid Action");
             return false;
