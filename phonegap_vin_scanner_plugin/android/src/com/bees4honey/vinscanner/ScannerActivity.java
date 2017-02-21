@@ -159,9 +159,9 @@ public class ScannerActivity extends AppCompatActivity implements ScannerListene
         vincodeView = (TextView)findViewById(getResId("tv_vincode", "id"));
         vincodeView.setVisibility(View.INVISIBLE);
 
-        findViewById(getResId("orientationButton", "id")).setOnClickListener(RotateListener);
+        // findViewById(getResId("orientationButton", "id")).setOnClickListener(RotateListener);
 
-        findViewById(getResId("torchButton", "id")).setOnClickListener(TorchListener);
+        // findViewById(getResId("torchButton", "id")).setOnClickListener(TorchListener);
     }
     final View.OnClickListener TorchListener = new View.OnClickListener() {
 
