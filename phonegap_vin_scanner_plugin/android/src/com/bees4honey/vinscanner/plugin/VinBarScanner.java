@@ -23,8 +23,8 @@ public class VinBarScanner extends CordovaPlugin {
         this.cbContext = callbackContext;
 
         if (action.equals(ACTION_SCAN)) {
-            cordova.getThreadPool().execute(new Runnable() {
-                @Override
+            this.cordova.getActivity().runOnUiThread(new Runnable() {
+                //@Override
                 public void run() {
                     scan();
                 }
