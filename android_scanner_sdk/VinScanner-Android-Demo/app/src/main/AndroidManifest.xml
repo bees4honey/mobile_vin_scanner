@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.0" package="com.bees4honey.vinscanner.example">
+
+    <uses-sdk
+            android:minSdkVersion="8"
+            android:targetSdkVersion="15">
+    </uses-sdk>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+
+    <application
+            android:icon="@drawable/icon"
+            android:label="@string/app_name">
+        <activity android:name="com.bees4honey.vinscanner.Scanner"
+                  android:label="@string/app_name"
+                  android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="com.midtronics.android.action.SCANVINB4H" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest> 
