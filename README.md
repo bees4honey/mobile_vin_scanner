@@ -1,5 +1,7 @@
 # Mobile VIN Scanner SDK
 
+This repo contains source files for native development only. If you need Phonegap plugin use https://github.com/bees4honey/mobile_vin_scanner_phonegap instead.
+
 This is repo for Mobile VIN Scanner SDK created and maintained by bees4honey.
 
 Mobile VIN Scanner SDK allows developers to quickly embed VIN scanning functionality into their iOS, Android and PhoneGap powered apps.
@@ -30,8 +32,7 @@ There are two ways to try our VIN scanning technology.
 You are free to download any of our projects and use it in development purpose inside your app. 
 
 You are not allowed to comercialize (that is, sell, rent, trade or lease) Mobile VIN Scanner SDK, 
-modify, recompile, reverse engineer or otherwise alter the Mobile VIN Scanner SDK. Please read more about licensing
-in license_agreement.txt
+modify, recompile, reverse engineer or otherwise alter the Mobile VIN Scanner SDK. Please read more about licensing in license_agreement.txt
 
 Without License Key SDK will work in demo mode and amount of scans will be limited per install. 
 
@@ -39,22 +40,8 @@ Without License Key SDK will work in demo mode and amount of scans will be limit
 
 Thanks!
 
-## Phonegap plugin installation
+## Phonegap plugin
 
-We also support Phonegap VIN Scanner plugin for iOS and Android platforms.
+Phonegap plugin has been moved to separate repository: https://github.com/bees4honey/mobile_vin_scanner_phonegap
 
-**WARNING:** since VIN Scanner plugin heavily uses native code for both iOS and Android platforms, the Adobe Phonegap Build cloud service is not supported. To use our plugin you need to build project using Phonegap command line tools.
-
-Only Android versions 4.0 and higher and iOS versions 7.0 and higher are supported in Phonegap plugin.
-
-Installation instructions:
-
-1. Generate your project using "phonegap create" command.
-2. Add a plugin to your project using the following command:
-
-```
-phonegap plugin add https://github.com/bees4honey/mobile_vin_scanner#:/phonegap_vin_scanner_plugin
-```
-
-
-You can find usage example in plugins/com.bees4honey.vinscanner/index.html file in Phonegap project's folder.
+Follow the provided link for Phonegap plugin installation instructions.
