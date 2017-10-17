@@ -24,8 +24,6 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Camera is required to scan VIN codes</string>
-	<key>UIMainStoryboardFile</key>
-	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
