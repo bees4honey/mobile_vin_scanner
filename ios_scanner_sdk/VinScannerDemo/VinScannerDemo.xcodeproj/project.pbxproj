@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D2685DD1DF7044700AC79A4 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */; };
+		115A8BD02174AA4D002FD358 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 115A8BCF2174AA4D002FD358 /* libc++.tbd */; };
 		B15459151A91C706004F3FF1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459141A91C706004F3FF1 /* main.m */; };
 		B15459181A91C706004F3FF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B15459171A91C706004F3FF1 /* AppDelegate.m */; };
 		B15459201A91C706004F3FF1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B154591F1A91C706004F3FF1 /* Images.xcassets */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		115A8BCF2174AA4D002FD358 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		B154590F1A91C706004F3FF1 /* VinScannerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinScannerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15459131A91C706004F3FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2685DD1DF7044700AC79A4 /* libstdc++.tbd in Frameworks */,
+				115A8BD02174AA4D002FD358 /* libc++.tbd in Frameworks */,
 				B154596C1A91D983004F3FF1 /* MobileCoreServices.framework in Frameworks */,
 				B154596A1A91D957004F3FF1 /* CoreMedia.framework in Frameworks */,
 				B15459681A91D94C004F3FF1 /* UIKit.framework in Frameworks */,
@@ -118,6 +119,7 @@
 		5D2685DB1DF7044700AC79A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				115A8BCF2174AA4D002FD358 /* libc++.tbd */,
 				5D2685DC1DF7044700AC79A4 /* libstdc++.tbd */,
 			);
 			name = Frameworks;
