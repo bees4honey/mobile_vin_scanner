@@ -24,7 +24,7 @@
                android:contentDescription="@null"
                android:background="@drawable/aim_2d"/>
 
-    <ImageButton
+<!--     <ImageButton
         android:id="@+id/torchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_gravity="bottom|right"
         android:src="@drawable/rotate"
         android:background="@null"
-        android:contentDescription="@null"/>
+        android:contentDescription="@null"/> -->
 
     <TextView
         android:layout_width="wrap_content" android:layout_height="wrap_content"

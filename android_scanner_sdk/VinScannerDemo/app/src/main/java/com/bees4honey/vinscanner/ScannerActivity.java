@@ -149,7 +149,6 @@ public class ScannerActivity extends AppCompatActivity implements ScannerListene
         scanner = (ScannerFragment)fm.findFragmentByTag(CAMERA_FRAGMENT);
         if (scanner == null) {
             scanner = new ScannerFragment();
-            scanner.setRetainInstance(true);
             fm.beginTransaction().add(getResId("fragment_container", "id"),
                     scanner, CAMERA_FRAGMENT).commit();
         }
@@ -160,32 +159,34 @@ public class ScannerActivity extends AppCompatActivity implements ScannerListene
         vincodeView = (TextView)findViewById(getResId("tv_vincode", "id"));
         vincodeView.setVisibility(View.INVISIBLE);
 
-        findViewById(getResId("orientationButton", "id")).
-                setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        boolean vertically = !scanner.isScanVertically();
-                        scanner.setScanVertically(vertically);
-                        finder.setContentOrientation(vertically ? ViewFinder.ContentOrientation.VERTICAL :
-                                ViewFinder.ContentOrientation.HORIZONTAL);
-                    }
-                });
+        findViewById(getResId("orientationButton", "id")).setOnClickListener(RotateListener);
 
-        findViewById(getResId("torchButton", "id")).setOnClickListener(new View.OnClickListener() {
+        findViewById(getResId("torchButton", "id")).setOnClickListener(TorchListener);
+    }
+    final View.OnClickListener TorchListener = new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                if (scanner.isFlashOn()) {
-                    if (scanner.flashTurnOff()) {
-                        ((ImageButton) v).setImageResource(getResId("light", "drawable"));
-                    }
-                } else {
-                    if (scanner.flashTurnOn()) {
-                        ((ImageButton) v).setImageResource(getResId("light_on", "drawable"));
-                    }
+        @Override
+        public void onClick(View v) {
+            if (scanner.isFlashOn()) {
+                if (scanner.flashTurnOff()) {
+                    ((ImageButton) v).setImageResource(getResId("light", "drawable"));
+                }
+            } else {
+                if (scanner.flashTurnOn()) {
+                    ((ImageButton) v).setImageResource(getResId("light_on", "drawable"));
                 }
             }
-        });
-    }
+        }
+    };
+    final View.OnClickListener RotateListener = new View.OnClickListener(){
+
+        @Override
+        public void onClick(View v) {
+            boolean vertically = !scanner.isScanVertically();
+            scanner.setScanVertically(vertically);
+            finder.setContentOrientation(vertically ? ViewFinder.ContentOrientation.VERTICAL :
+                    ViewFinder.ContentOrientation.HORIZONTAL);
+        }
+    };
 
 }

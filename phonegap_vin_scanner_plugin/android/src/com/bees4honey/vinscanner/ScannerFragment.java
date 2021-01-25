@@ -50,6 +50,7 @@ public class ScannerFragment extends Fragment {
     private static final String TAG = ScannerFragment.class.getCanonicalName();
 
     private SurfaceView surfaceView;
+    private View inflated;
     private FrameLayout surfaceContainer;
     private Camera camera;
     private int camOrientation;
@@ -131,19 +132,21 @@ public class ScannerFragment extends Fragment {
         Resources r = inflater.getContext().getApplicationContext().getResources();
 
         int resourceId = r.getIdentifier("scanner_fragment", "layout", packageName);
-        View v = inflater.inflate(resourceId, container, false);
+        inflated = inflater.inflate(resourceId, container, false);
         surfaceView = new SurfaceView(inflater.getContext());
 
         resourceId = r.getIdentifier("surface_container", "id", packageName);
-        surfaceContainer = (FrameLayout) v.findViewById(resourceId);
+        surfaceContainer = (FrameLayout) inflated.findViewById(resourceId);
 
-        return v;
+        return inflated;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         surfaceView = null;
+        inflated = null;
+        surfaceContainer = null;
     }
 
     @Override

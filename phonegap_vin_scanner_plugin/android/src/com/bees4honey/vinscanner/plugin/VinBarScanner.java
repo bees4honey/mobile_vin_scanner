@@ -23,7 +23,12 @@ public class VinBarScanner extends CordovaPlugin {
         this.cbContext = callbackContext;
 
         if (action.equals(ACTION_SCAN)) {
-            scan();
+            this.cordova.getActivity().runOnUiThread(new Runnable() {
+                //@Override
+                public void run() {
+                    scan();
+                }
+            });
         } else {
             callbackContext.error("Invalid Action");
             return false;
@@ -57,10 +62,10 @@ public class VinBarScanner extends CordovaPlugin {
                 try {
                     obj.put("VINCode", "NON RESULT");
                     obj.put("cancelled", "true");
+                    this.cbContext.success(obj);
                 } catch (JSONException e) {
                     //Log.d(LOG_TAG, "This should never happen");
                 }
-                this.cbContext.success(obj);
             } else {
                 this.cbContext.error("Invalid Activity");
             }
